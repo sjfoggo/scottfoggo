@@ -1,0 +1,1 @@
+This is my personal website originally designed in strictly HTML/CSS but I'm currently redesigning.q
