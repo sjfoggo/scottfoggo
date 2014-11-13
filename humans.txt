@@ -3,7 +3,7 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
+    Scott Foggo -- Developer/Designer -- https://github.com/foggopogo
 
 # THANKS
 
