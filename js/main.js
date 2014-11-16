@@ -8,7 +8,12 @@ $( document ).ready(function() {
                     distanceX: '200px',
                     enableEscapeKey: true
                 });
-	$("a").click(function(){
+	$('#toggle-nav').click(function(){
 	  $(this).toggleClass("open");
-	}); 
+	});
+    $(".intro").typed({
+        strings: ["bold.^1000", "passionate.^1000", "creative.^1000", "a developer/designer."],
+        typeSpeed: 10,
+        backSpeed: 20
+    }); 
 });
