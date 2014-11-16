@@ -112,7 +112,7 @@ img, video, canvas {
   color: #FFF;
   text-decoration: none;
   font-size: 1.5em;
-  opacity: 0.8
+  opacity: 0.8;
 }
 
 #navbar a:hover, #navbar a:active {
@@ -139,7 +139,7 @@ img, video, canvas {
 
 .header h1 {
   font-size: 5vw;
-  opacity:.9;
+  opacity:.95;
   margin-bottom: 3%;
 }
 
