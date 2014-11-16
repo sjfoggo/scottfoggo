@@ -15,35 +15,35 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font-family: 'Montserrat', sans-serif;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-family: 'Montserrat', sans-serif;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-    display: block;
+  display: block;
 }
 body {
-    line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-    list-style: none;
+  list-style: none;
 }
 blockquote, q {
-    quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-    content: '';
-    content: none;
+  content: '';
+  content: none;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 img, video, canvas {
@@ -52,17 +52,17 @@ img, video, canvas {
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; 
-    display: table;
+  content: " "; 
+  display: table;
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 .clearfix {
-    clear: both;
-    *zoom: 1;
+  clear: both;
+  *zoom: 1;
 }
 
 
@@ -96,38 +96,60 @@ img, video, canvas {
                                 FOGGOPOGO
    ========================================================================== */
 
-
-#introduction {
-    min-width:100%;
-    min-height:100%;
-    position: relative;
+#navbar {
+  background: #00203F;
 }
 
-#header {
-    position: absolute;
-    height: 20%;
-    margin: auto auto auto 55%;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 10;
-    color: #FFF;
+#navbar ul {
+  margin-top: 15em;
 }
 
-#header h1 {
+#navbar li {
+  padding:15%;
+}
+
+#navbar a {
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1.5em;
+  opacity: 0.8
+}
+
+#navbar a:hover, #navbar a:active {
+  opacity: 1;
+}
+
+.introduction {
+  min-width:100%;
+  min-height:100%;
+  position: relative;
+}
+
+.header {
+  position: absolute;
+  height: 20%;
+  margin: auto auto auto 55%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  color: #FFF;
+}
+
+.header h1 {
   font-size: 5vw;
   opacity:.9;
   margin-bottom: 3%;
 }
 
-#header h3 {
+.header h3 {
   font-size: 2.5vw;
   display: inline;
   opacity:.8;
 }
 
-#down-arrow {
+.down-arrow {
   display: block;
   position: absolute;
   left:0;
