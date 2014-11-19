@@ -95,13 +95,21 @@ img, video, canvas {
 /* ==========================================================================
                                 FOGGOPOGO
    ========================================================================== */
+body {
+  background: url(../img/bg.jpg) no-repeat 40% center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 
 #navbar {
   background: #00203F;
 }
 
 #navbar ul {
-  margin-top: 15em;
+  margin-top: 2em;
 }
 
 #navbar li {
@@ -126,44 +134,26 @@ img, video, canvas {
 }
 
 .header {
-  position: absolute;
   height: 20%;
-  margin: auto auto auto 55%;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 10;
   color: #FFF;
+  width: 50%;
+  margin: 15% 55% 10%;
 }
 
 .header h1 {
-  font-size: 5vw;
+  font-size: 4.75em;
   opacity:.95;
   margin-bottom: 3%;
 }
 
 .header h3 {
-  font-size: 2.5vw;
+  font-size: 2.25em;
   display: inline;
   opacity:.8;
 }
 
-.down-arrow {
-  display: block;
-  position: absolute;
-  left:0;
-  bottom:0;
-  opacity: .8;
-  cursor: pointer;
-  width:5%;
-  z-index: 10000;
-  padding: 3.5% 45%;
-}
-
 .navicon-button {
   display: block;
-  position: absolute;
   padding: 2.0625rem 1.5rem;
   transition: 0.25s;
   top:0;
@@ -242,6 +232,29 @@ img, video, canvas {
 /* ==========================================================================
                                 MEDIA QUERIES
    ========================================================================== */
+@media (max-width: 1024px) {
+  .header {
+    margin: 15% 50% 10%;
+  }
+  .header h1 {
+    font-size: 4em;
+  }
+  .header h3 {
+    font-size: 2em;
+  }
+}
 
 
+@media (max-width: 768px) {
+  .header {
+    margin: 15% 45% 10%;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 3em;
+  }
+  .header h3 {
+    display: none;
+  }
+}
 
