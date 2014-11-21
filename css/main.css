@@ -65,6 +65,9 @@ img, video, canvas {
   *zoom: 1;
 }
 
+html, body {
+  height: 100%;
+}
 
 /* ==========================================================================
                                 TYPED.JS
@@ -95,12 +98,16 @@ img, video, canvas {
 /* ==========================================================================
                                 FOGGOPOGO
    ========================================================================== */
-body {
-  background: url(../img/bg.jpg) no-repeat 40% center fixed; 
+#introduction {
+  width: 100%;
+  height: 100%;
+  background: url("../img/bg.jpg") no-repeat center center fixed;
+  position: relative;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  overflow: hidden;
 }
 
 
@@ -127,26 +134,27 @@ body {
   opacity: 1;
 }
 
-.introduction {
-  min-width:100%;
-  min-height:100%;
-  position: relative;
-}
 
-.header {
+#header {
+  position: absolute;
   height: 20%;
+  width: 40%;
+  margin: auto 48%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
   color: #FFF;
-  width: 50%;
-  margin: 15% 55% 10%;
 }
 
-.header h1 {
+#header h1 {
   font-size: 4.75em;
   opacity:.95;
   margin-bottom: 3%;
 }
 
-.header h3 {
+#header h3 {
   font-size: 2.25em;
   display: inline;
   opacity:.8;
@@ -154,6 +162,7 @@ body {
 
 .navicon-button {
   display: block;
+  position: absolute;
   padding: 2.0625rem 1.5rem;
   transition: 0.25s;
   top:0;
