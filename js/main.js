@@ -1,7 +1,4 @@
 $( document ).ready(function() {
-    $("#toggle-nav").click(function(){
-      $(this).toggleClass("open");
-    });
     $("#quickbio").typed({
         strings: ["bold.^1000", "passionate.^1000", "creative.^1000", "a developer/designer."],
         typeSpeed: 10,
@@ -25,5 +22,12 @@ $( document ).ready(function() {
         $(this).find('.skillbar-bar').animate({
         width:$(this).attr('data-percent')
     }, 2000);
-});
+    });
+
+    $("#photo-carousel").owlCarousel({
+        autoPlay: 5000,
+        paginationSpeed: 2000,
+        rewindSpeed: 2000,
+        singleItem: true
+    });
 });

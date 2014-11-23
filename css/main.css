@@ -118,7 +118,15 @@ p {
 
 .section-header {
   font-size: 2em;
-  margin: 3%;
+  margin: 0 3% 3%;
+}
+
+.column {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 80%;
+  padding: 1% 5% 8%;
+
 }
 
 /* ****************************** INTRO **********************************  */
@@ -174,9 +182,6 @@ p {
 }
 
 
-/*#navbar {
-  background: #00203F;
-}
 
 #navbar ul {
   margin-top: 2em;
@@ -195,14 +200,14 @@ p {
 
 #navbar a:hover, #navbar a:active {
   opacity: 1;
-}*/
+}
 
 /* ****************************** NAV TOGGLE **********************************  */
 
 .navicon-button {
   display: block;
   position: fixed;
-  padding: 2.0625rem 1.5rem;
+  margin: 2.0625rem 1.5rem;
   transition: 0.25s;
   top:0;
   left:0;
@@ -210,7 +215,7 @@ p {
   user-select: none;
   opacity: .8;
   width:5%;
-  z-index: 10000;
+  z-index: 100;
 }
 .navicon-button .navicon:before, .navicon-button .navicon:after {
   transition: 0.25s;
@@ -236,7 +241,7 @@ p {
   background: #FFF;
   transition: 0.5s;
   border-radius: 2.5rem;
-  z-index: 10000;
+  z-index: 100;
 }
 .navicon:before, .navicon:after {
   display: block;
@@ -255,33 +260,7 @@ p {
   top: -.625rem;
 }
 
-.open:not(.steps) .navicon:before,
-.open:not(.steps) .navicon:after {
-  top: 0 !important;
-}
-
-.open .navicon:before,
-.open .navicon:after {
-  transition: 0.5s;
-}
-
-.open.x .navicon {
-  background: transparent;
-}
-
-.open.x .navicon:before {
-  transform: rotate(-45deg);
-}
-.open.x .navicon:after {
-  transform: rotate(45deg);
-}
-
-
 /* ****************************** ABOUT **********************************  */
-
-#about{
-  padding: 6% 0;
-}
 
 #me {
   width: 25%;
@@ -291,20 +270,11 @@ p {
 
 #bio {
   font-size: 2.3em;
-  width: 60%;
   margin: 3% auto;
   line-height: 1.75em;
 }
 
 /* ****************************** SKILLS **********************************  */
-
-#skills {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 8% 5%;
-
-}
 
 .skillbar {
   position:relative;
@@ -347,9 +317,9 @@ p {
 .skillbar-title span {
   display:block;
   background:rgba(0, 0, 0, 0.1);
-  padding:0 20px;
+  padding:0 7px;
   height:35px;
-  width: 65px;
+  width: 5em;
   line-height:35px;
   -webkit-border-top-left-radius:3px;
   -webkit-border-bottom-left-radius:3px;
@@ -366,6 +336,31 @@ p {
   border-radius:3px;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
+}
+
+
+/* ****************************** PHOTOS **********************************  */
+
+#photo-carousel .item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+/* ****************************** CONTACT **********************************  */
+
+#contact ul li {
+  display: inline-block;
+  width: 3%;
+  height: 3%;
+  margin: 0 5%;
+  padding: 0 5%;
+  position: relative;
+}
+
+#contact ul li a i {
+font-size: 3em;
 }
 
 /* ==========================================================================
