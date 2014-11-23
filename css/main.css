@@ -238,7 +238,7 @@ p {
   position: fixed;
   width: 2.5em;
   height: .3125rem;
-  background: #FFF;
+  background: #777;
   transition: 0.5s;
   border-radius: 2.5rem;
   z-index: 100;
@@ -248,7 +248,7 @@ p {
   content: "";
   height: .3125rem;
   width: 2.5rem;
-  background: #FFF;
+  background: #777;
   position: absolute;
   transition: 0.5s 0.25s;
   border-radius: 1rem;
