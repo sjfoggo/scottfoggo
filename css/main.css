@@ -117,8 +117,8 @@ p {
 }
 
 .section-header {
-  font-size: 2em;
-  margin: 0 3% 3%;
+  font-size: 1.75em;
+  margin-bottom: 3%;
   color: #1B325F;
 }
 
@@ -264,7 +264,7 @@ p {
 /* ****************************** ABOUT **********************************  */
 
 #me {
-  width: 25%;
+  width: 200px;
   border-radius: 50%;
   margin-bottom: 4%;
 }
@@ -361,9 +361,13 @@ p {
   position: relative;
 }
 
-#contact ul li a i {
+#contact ul li a {
   width: 50px;
   height: 50px;
+  font-size: 3em;
+}
+
+#contact ul li a i {
   color: #9CC4E4;
 }
 
