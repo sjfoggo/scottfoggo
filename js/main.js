@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     $("#quickbio").typed({
-        strings: ["daring.^1000", "passionate.^1000", "creative.^1000", "a developer."],
+        strings: ["creative.^1000", "passionate.^1000", "a developer."],
         typeSpeed: 10,
         backSpeed: 20
     });
