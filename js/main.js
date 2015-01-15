@@ -4,6 +4,7 @@ $( document ).ready(function() {
         typeSpeed: 10,
         backSpeed: 20
     });
+    new WOW().init();
     $('a[href*=#]:not([href=#])').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
             || location.hostname == this.hostname) {
