@@ -6,7 +6,7 @@ $( document ).ready(function() {
     });
     new WOW().init();
     $('a[href*=#]:not([href=#])').click(function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
             || location.hostname == this.hostname) {
 
             var target = $(this.hash);
@@ -23,12 +23,5 @@ $( document ).ready(function() {
         $(this).find('.skillbar-bar').animate({
         width:$(this).attr('data-percent')
     }, 2000);
-    });
-
-    $("#photo-carousel").owlCarousel({
-        autoPlay: 5000,
-        paginationSpeed: 2000,
-        rewindSpeed: 2000,
-        singleItem: true
     });
 });
