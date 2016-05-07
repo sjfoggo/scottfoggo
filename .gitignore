@@ -37,6 +37,10 @@ ehthumbs.db
 Thumbs.db
 
 # FOLDERS #
-SJF/
 Pixelmator/
 img/
+
+# images #
+*.png
+*.jpg
+*.ico
