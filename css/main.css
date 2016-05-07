@@ -11,8 +11,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
   margin: 0;
@@ -23,7 +23,7 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block;
 }
@@ -52,7 +52,7 @@ img, video, canvas {
 
 .clearfix:before,
 .clearfix:after {
-  content: " "; 
+  content: " ";
   display: table;
 }
 
@@ -106,7 +106,11 @@ html, body {
 .container {
   width: 100%;
   text-align: center;
-  background: #E9F2F9; 
+  background: #EEE;
+}
+
+h1, h2, h3, span, a, p {
+  color: #3FB8AF;
 }
 
 h1, h2, h3, span, a {
@@ -114,13 +118,13 @@ h1, h2, h3, span, a {
 }
 
 p {
-  color: #1B325F;
-  font-family: 'Quicksand', sans-serif;}
+  font-family: 'Quicksand', sans-serif;
+  color: #333;
+}
 
 .section-header {
   font-size: 1.75em;
   margin-bottom: 3%;
-  color: #1B325F;
 }
 
 .column {
@@ -128,7 +132,7 @@ p {
   margin: 0 auto;
   width: 80%;
   padding: 10% 0;
-  border-bottom: 1px solid #F26C4F;
+  border-bottom: 1px solid #333;
 }
 
 /* ****************************** INTRO **********************************  */
@@ -150,13 +154,12 @@ p {
   position: absolute;
   height: 30%;
   width: 50%;
-  margin: auto 50%;
+  margin: auto 55%;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   z-index: 999;
-  color: #F26C4F;
 }
 
 #header h1 {
@@ -171,19 +174,23 @@ p {
   opacity:.8;
 }
 
-#down-arrow {
-  position: absolute;
-  width: 60px;
-  margin: 0 auto 2%;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 999;
-  cursor: pointer;
+.down_arrow {
+	width: 60px;
+	height: 72px;
+	position: absolute;
+	left: 50%;
+	margin-left: -30px;
+	bottom: 20px;
+}
+
+.down_arrow path {
+	stroke: #3FB8AF;
+	fill: transparent;
+	stroke-width: 4px;
 }
 
 #navbar {
-  background: #9CC4E4;
+  background: #CCC;
 }
 
 #navbar ul {
@@ -195,13 +202,13 @@ p {
 }
 
 #navbar a {
-  color: #3A89C9;
+  color: #333;
   text-decoration: none;
   font-size: 1.5em;
 }
 
 #navbar a:hover, #navbar a:active {
-  color: #1B325F;
+  color: #3FB8AF;
 }
 
 /* ****************************** NAV TOGGLE **********************************  */
@@ -240,7 +247,7 @@ p {
   position: fixed;
   width: 2.5em;
   height: .3125rem;
-  background: #F26C4F;
+  background: #3FB8AF;
   transition: 0.5s;
   border-radius: 2.5rem;
   z-index: 100;
@@ -250,7 +257,7 @@ p {
   content: "";
   height: .3125rem;
   width: 2.5rem;
-  background: #F26C4F;
+  background: #3FB8AF;
   position: absolute;
   transition: 0.5s 0.25s;
   border-radius: 1rem;
@@ -265,7 +272,7 @@ p {
 /* ****************************** ABOUT **********************************  */
 
 #me {
-  width: 200px;
+  width: 250px;
   border-radius: 50%;
   margin-bottom: 4%;
 }
@@ -283,7 +290,7 @@ p {
   display:block;
   margin-bottom:15px;
   width:100%;
-  background:#9CC4E4;
+  background:#CCC;
   height:35px;
   border-radius:3px;
   -moz-border-radius:3px;
@@ -301,13 +308,12 @@ p {
 }
 
 .skillbar-title {
-  background: #1B325F;
+  background: #333;
   position:absolute;
   top:0;
   left:0;
   font-weight:bold;
   font-size:13px;
-  color:#fff;
   -webkit-border-top-left-radius:3px;
   -webkit-border-bottom-left-radius:4px;
   -moz-border-radius-topleft:3px;
@@ -319,7 +325,7 @@ p {
 .skillbar-title span {
   display:block;
   background:rgba(0, 0, 0, 0.1);
-  color: #E9F2F9;
+  color: #EEE;
   padding:0 7px;
   height:35px;
   width: 6em;
@@ -333,7 +339,7 @@ p {
 }
 
 .skillbar-bar {
-  background: #3A89C9;
+  background: #3FB8AF;
   height:35px;
   width:0px;
   border-radius:3px;
@@ -342,12 +348,14 @@ p {
 }
 
 
-/* ****************************** PHOTOS **********************************  */
+/* ****************************** COLOURS **********************************  */
 
-#photo-carousel .item img {
-  display: block;
-  width: 100%;
-  height: auto;
+.greenfont {
+  color: #3FB8AF
+}
+
+.orange {
+  color: #F26C4F
 }
 
 
@@ -369,11 +377,11 @@ p {
 }
 
 #contact ul li a i {
-  color: #9CC4E4;
+  color: #333;
 }
 
 #contact ul li a i:hover, #contact ul li a i:active {
-  color: #3A89C9;
+  color: #3FB8AF;
 }
 
 /* ==========================================================================
@@ -422,4 +430,3 @@ p {
   font-size: 3em;
 }
 }
-

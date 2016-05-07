@@ -4,7 +4,6 @@ $( document ).ready(function() {
         typeSpeed: 10,
         backSpeed: 20
     });
-    new WOW().init();
     $('a[href*=#]:not([href=#])').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
             || location.hostname == this.hostname) {
@@ -13,7 +12,7 @@ $( document ).ready(function() {
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
                if (target.length) {
                  $('html,body').animate({
-                     scrollTop: target.offset().top
+                     scrollTop: target.offset().top,
                 }, 1000);
                 return false;
             }
@@ -21,7 +20,7 @@ $( document ).ready(function() {
     });
     $('.skillbar').each(function(){
         $(this).find('.skillbar-bar').animate({
-        width:$(this).attr('data-percent')
+        width: $(this).attr('data-percent'),
     }, 2000);
     });
 });
