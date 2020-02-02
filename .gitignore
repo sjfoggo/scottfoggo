@@ -39,4 +39,5 @@ Thumbs.db
 # FOLDERS #
 Pixelmator/
 
-# images #
+# node_modules #
+node_modules
