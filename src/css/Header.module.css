@@ -1,0 +1,40 @@
+.container {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 16px;
+  height: 100vh;
+}
+
+.name {
+  font-size: 12em;
+  flex-grow: 1;
+  max-width: 40%;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  justify-self: flex-end;
+  font-size: 4em;
+  font-weight: bold;
+  text-align: right;
+}
+
+a {
+  transition: all 0.4s ease;
+}
+
+.bioLink:hover {
+  color: var(--color-yellow);
+}
+
+.workExpLink:hover {
+  color: var(--color-pink);
+}
+
+.contactLink:hover {
+  color: var(--color-blue);
+}
