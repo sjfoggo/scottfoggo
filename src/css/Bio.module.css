@@ -1,12 +1,29 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
-.content {
+.imgContainer {
+  width: 50%;
+  margin: auto;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  transition: all 0.2s linear;
+}
+
+img:hover {
+  filter: none;
+}
+
+.textContainer {
+  width: 50%;
+  margin: auto;
+}
+
+p {
   font-size: 2em;
-  max-width: 200px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif
 }
