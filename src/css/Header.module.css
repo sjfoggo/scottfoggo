@@ -3,14 +3,16 @@
   color: white;
   display: flex;
   flex-direction: column;
-  padding: 0px 16px;
+  justify-items: space-between;
   height: 100vh;
+  width: 100%;
 }
 
 .name {
-  font-size: 12em;
+  max-width: 60%;
   flex-grow: 1;
-  max-width: 40%;
+  font-size: 12vw;
+  padding-left: 12px;
 }
 
 .nav {
@@ -18,20 +20,31 @@
   flex-direction: column;
   align-self: flex-end;
   justify-self: flex-end;
-  font-size: 4em;
+  font-size: 4vw;
   font-weight: bold;
+  padding-bottom: 12px;
+  padding-right: 12px;
   text-align: right;
 }
 
 a {
-  transition: all 0.4s ease;
+  transition: color 0.4s ease;
 }
 
-.bioLink:hover {
+@media (max-width: 1200px) {
+  .name {
+    font-size: 16vw;
+  }
+  .nav {
+    font-size: 8vw;
+  }
+}
+
+.aboutLink:hover {
   color: var(--color-yellow);
 }
 
-.workExpLink:hover {
+.careerLink:hover {
   color: var(--color-pink);
 }
 

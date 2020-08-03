@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import Header from "./Header";
 import Section from "./common/Section";
-import Bio from "./bio/Bio";
-import WorkExp from "./WorkExp";
+import About from "./about/About";
+import Career from "./Career";
 import Contact from "./Contact";
 
 import { BrowserRouter as Router } from "react-router-dom";
@@ -10,15 +10,15 @@ import "../css/reset.css";
 import "../css/App.css";
 
 function App() {
-  const bioRef = useRef(null);
-  const workExpRef = useRef(null);
+  const aboutRef = useRef(null);
+  const careerRef = useRef(null);
   const contactRef = useRef(null);
 
   return (
     <Router>
-      <Header refs={{ bioRef, workExpRef, contactRef }} />
-      <Section ref={bioRef}><Bio /></Section>
-      <Section ref={workExpRef}><WorkExp /></Section>
+      <Header refs={{ aboutRef, careerRef, contactRef }} />
+      <Section ref={aboutRef}><About /></Section>
+      <Section ref={careerRef}><Career /></Section>
       <Section ref={contactRef}><Contact /></Section>
     </Router>
   );

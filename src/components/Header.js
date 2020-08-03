@@ -7,11 +7,11 @@ const Header = ({ refs }) => {
 
   useEffect(() => {
     switch (location.pathname) {
-      case "/bio":
-        scrollSmoothHandler(refs.bioRef);
+      case "/about":
+        scrollSmoothHandler(refs.aboutRef);
         break;
-      case "/work_exp":
-        scrollSmoothHandler(refs.workExpRef);
+      case "/career":
+        scrollSmoothHandler(refs.careerRef);
         break;
       case "/contact":
         scrollSmoothHandler(refs.contactRef);
@@ -31,8 +31,8 @@ const Header = ({ refs }) => {
         <h1 className={styles.name}>Scott Foggo</h1>
         <nav className={styles.nav}>
           <>
-            <Link className={styles.bioLink} to="/bio">Bio</Link>
-            <Link className={styles.workExpLink} to="/work_exp">Work Exp</Link>
+            <Link className={styles.aboutLink} to="/about">About</Link>
+            <Link className={styles.careerLink} to="/career">Career</Link>
             <Link className={styles.contactLink} to="/contact">Contact</Link>
           </>
         </nav>
