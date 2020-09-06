@@ -2,17 +2,11 @@ import React from "react";
 import Column from "./common/Column";
 import Row from "./common/Row";
 import Text from "./common/Text";
-import Link from "./common/Link";
 
 import styles from "./../css/Career.module.css";
 
-import profile from "./../assets/Profile.png";
-
 const ANALYTICS_LINK =
   "https://www.gartner.com/en/information-technology/glossary/augmented-analytics";
-
-const PIZZA_LINK =
-  "http://doughgenerator.allsimbaseball9.com/recipe.php?recipe_id=27";
 
 function Career() {
   return (

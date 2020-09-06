@@ -3,3 +3,7 @@
   --color-yellow: #FFE354;
   --color-blue: #4A8BEB;
 }
+
+a {
+  transition: color 0.4s ease;
+}

@@ -1,5 +1,15 @@
-.container {
+.backgroundContainer {
   background-color: black;
   color: white;
   height: 100vh;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.iconContainer i {
+  font-size: 8vw;
 }

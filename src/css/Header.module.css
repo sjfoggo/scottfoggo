@@ -27,10 +27,6 @@
   text-align: right;
 }
 
-a {
-  transition: color 0.4s ease;
-}
-
 @media (max-width: 1200px) {
   .name {
     font-size: 16vw;
@@ -45,9 +41,9 @@ a {
 }
 
 .careerLink:hover {
-  color: var(--color-pink);
+  color: var(--color-blue);
 }
 
 .contactLink:hover {
-  color: var(--color-blue);
+  color: var(--color-pink);
 }

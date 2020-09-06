@@ -1,14 +1,24 @@
 import React from "react";
 import styles from "../css/Contact.module.css";
 import Row from "./common/Row";
+import Link from "./common/Link";
+import Resume from "../assets/ScottFoggo-Resume.pdf";
 
 function Contact() {
   return (
-    <div className={styles.container}>
+    <div className={styles.backgroundContainer}>
       <Row>
-        <i class="fas fa-paper-plane"></i>
-        <i class="fab fa-linkedin"></i>
-        <i class="fab fa-github"></i>
+        <div className={styles.iconContainer}>
+          <Link href="https://github.com/foggopogo" color="yellow">
+            <i className="fab fa-github"></i>
+          </Link>
+          <Link href="https://www.linkedin.com/in/scott-foggo/" color="blue">
+            <i className="fab fa-linkedin"></i>
+          </Link>
+          <Link href={Resume} color="pink">
+            <i className="fas fa-file-alt"></i>
+          </Link>
+        </div>
       </Row>
     </div>
   );
