@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import Header from "./Header";
 import Section from "./common/Section";
-import About from "./about/About";
+import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
 

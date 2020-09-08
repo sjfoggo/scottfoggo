@@ -7,3 +7,12 @@
 a {
   transition: color 0.4s ease;
 }
+
+img {
+  filter: grayscale(100%);
+}
+
+img:hover {
+  filter: none;
+  transition: all 0.2s linear;
+}

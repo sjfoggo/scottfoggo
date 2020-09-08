@@ -7,6 +7,15 @@
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
+.image {
+  padding: 0 auto;
+}
+
+.image img {
+  height: auto;
+  width: 60%;
+}
+
 .yellow:hover {
   color: var(--color-yellow);
 }
