@@ -1,0 +1,21 @@
+.image {
+  width: 100%;
+}
+
+.image img {
+  border-radius: 4px;
+  height: auto;
+  width: 100%;
+}
+
+.yellow:hover {
+  color: var(--color-yellow);
+}
+
+.blue:hover {
+  color: var(--color-blue);
+}
+
+.pink:hover {
+  color: var(--color-pink);
+}

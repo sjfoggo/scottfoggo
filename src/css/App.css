@@ -1,0 +1,18 @@
+:root {
+  --color-pink: #E270A4;
+  --color-yellow: #FFE354;
+  --color-blue: #4A8BEB;
+}
+
+a {
+  transition: color 0.4s ease;
+}
+
+img {
+  filter: grayscale(100%);
+}
+
+img:hover {
+  filter: none;
+  transition: all 0.2s linear;
+}

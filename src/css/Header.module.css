@@ -1,0 +1,67 @@
+.container {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-items: space-between;
+  height: 100vh;
+  width: 100%;
+}
+
+.name {
+  max-width: 60%;
+  flex-grow: 1;
+  font-size: 12vw;
+  padding-left: 12px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  justify-self: flex-end;
+  font-size: 4vw;
+  font-weight: bold;
+  padding-bottom: 12px;
+  padding-right: 12px;
+  text-align: right;
+}
+
+@media (max-width: 1200px) {
+  .name {
+    font-size: 16vw;
+  }
+  .nav {
+    font-size: 8vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .name {
+    font-size: 20vw;
+  }
+  .nav {
+    font-size: 12vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: 24vw;
+  }
+  .nav {
+    font-size: 16vw;
+  }
+}
+
+.aboutLink:hover {
+  color: var(--color-yellow);
+}
+
+.careerLink:hover {
+  color: var(--color-blue);
+}
+
+.contactLink:hover {
+  color: var(--color-pink);
+}

@@ -1,0 +1,28 @@
+.backgroundContainer {
+  background-color: black;
+  color: white;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.iconContainer i {
+  font-size: 8vw;
+}
+
+@media (max-width: 768px) {
+  .iconContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .iconContainer a {
+    margin: 20% 0;
+  }
+}
