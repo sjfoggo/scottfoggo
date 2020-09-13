@@ -8,14 +8,19 @@
 }
 
 .column {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   flex: 50%;
+  justify-content: space-evenly;
+  height: 100%;
   max-width: 50%;
-  align-self: center;
 }
 
 @media (max-width: 600px) {
   .column {
     flex: 100%;
+    height: 50%;
     max-width: 100%;
   }
 }

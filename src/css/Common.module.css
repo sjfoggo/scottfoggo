@@ -2,18 +2,14 @@
   height: 100vh;
 }
 
-.text {
-  font-size: 2em;
-  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-}
-
 .image {
-  padding: 0 auto;
+  width: 100%;
 }
 
 .image img {
+  border-radius: 4px;
   height: auto;
-  width: 60%;
+  width: 100%;
 }
 
 .yellow:hover {

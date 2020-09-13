@@ -16,3 +16,14 @@ img:hover {
   filter: none;
   transition: all 0.2s linear;
 }
+
+p, li {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.5em;
+}
+
+@media (max-width: 600px) {
+  p, li {
+    font-size: 1em;
+  }
+}

@@ -1,18 +1,32 @@
-.photoColumn {
-  flex: 25%;
-  overflow: hidden;
-  height: 100vh;
-  width: 25%;
+.textBlock {
+  align-self: center;
+  width: 80%;
+  font-size: 200%;
 }
 
 .image {
-  padding: 4px 4px 0px 4px;
-  max-width: 100%;
+  margin: 16px;
+  width: 60%;
 }
 
-.photoColumn img {
-  width: 100%;
-  height: auto;
-  vertical-align: middle;
+@media (max-width: 1200px) {
+  .textBlock {
+    font-size: 150%;
+  }
 }
 
+@media (max-width: 768px) {
+  .image {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .image {
+    width: 60%;
+  }
+
+  .textBlock {
+    font-size: 100%;
+  }
+}

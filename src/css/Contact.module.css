@@ -6,10 +6,20 @@
 
 .iconContainer {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   width: 60%;
 }
 
 .iconContainer i {
   font-size: 8vw;
+}
+
+@media (max-width: 600px) {
+  .iconContainer {
+    align-items: center;
+    flex-direction: column;
+    height: 60%;
+    justify-content: space-between;
+  }
 }

@@ -1,4 +1,72 @@
-.textBlock {
-  margin: 0 auto;
+.centeredBlock {
   width: 80%;
+  margin: 16px;
+  align-self: center;
+}
+
+.sectionHeading {
+  font-size: 250%;
+  margin-top: 24px;
+}
+
+.sectionHeading:first-of-type {
+  margin-top: 0;
+}
+
+.sectionSubHeading {
+  font-size: 175%;
+  margin-top: 12px;
+}
+
+.experienceBlock {
+  margin-left: 20px;
+  margin-top: 8px;
+}
+
+.teamName {
+  font-size: 150%;
+  margin-top: 20px;
+}
+
+.text {
+  font-size: 120%;
+  line-height: 1.1em;
+  margin-top: 4px;
+}
+
+.text li {
+  margin-top: 4px;
+}
+
+.image {
+  margin: 12px 0;
+  width: 45%;
+}
+
+@media (max-width: 1200px) {
+  .image {
+    width: 60%;
+  }
+
+  .sectionHeading {
+    font-size: 180%;
+  }
+
+  .sectionSubHeading {
+    font-size: 150%;
+  }
+
+  .teamName {
+    font-size: 125%;
+  }
+
+  .text {
+    font-size: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .noMobile {
+    display: none;
+  }
 }
