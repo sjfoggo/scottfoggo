@@ -36,6 +36,24 @@
   }
 }
 
+@media (max-width: 768px) {
+  .name {
+    font-size: 20vw;
+  }
+  .nav {
+    font-size: 12vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .name {
+    font-size: 24vw;
+  }
+  .nav {
+    font-size: 16vw;
+  }
+}
+
 .aboutLink:hover {
   color: var(--color-yellow);
 }

@@ -2,7 +2,9 @@ import React from "react";
 import styles from "../../css/Flex.module.css";
 
 function Column(props) {
-  return <div className={styles.column}>{props.children}</div>;
+  const className = props.noMobile ? [styles.noMobile, styles.column].join(" ") : styles.column;
+
+  return <div className={className}>{props.children}</div>;
 }
 
 export default Column;
