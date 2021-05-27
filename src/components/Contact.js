@@ -9,7 +9,7 @@ function Contact() {
     <div className={styles.backgroundContainer}>
       <Row>
         <div className={styles.iconContainer}>
-          <Link href="https://github.com/foggopogo" color="yellow">
+          <Link href="https://github.com/sjfoggo" color="yellow">
             <i className="fab fa-github"></i>
           </Link>
           <Link href="https://www.linkedin.com/in/scott-foggo/" color="blue">
