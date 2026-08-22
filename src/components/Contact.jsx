@@ -1,26 +1,27 @@
 import React from "react";
 import styles from "../css/Contact.module.css";
-import Row from "./common/Row";
-import Link from "./common/Link";
 import Resume from "../assets/ScottFoggo-Resume.pdf";
 
 function Contact() {
   return (
-    <div className={styles.backgroundContainer}>
-      <Row>
-        <div className={styles.iconContainer}>
-          <Link href="https://github.com/sjfoggo" color="yellow">
-            <i className="fab fa-github"></i>
-          </Link>
-          <Link href="https://www.linkedin.com/in/scott-foggo/" color="blue">
-            <i className="fab fa-linkedin"></i>
-          </Link>
-          <Link href={Resume} color="pink">
-            <i className="fas fa-file-alt"></i>
-          </Link>
-        </div>
-      </Row>
-    </div>
+    <footer className={styles.contact}>
+      <div className={styles.topline}>
+        <span>Get in touch</span>
+        <span>04 / 04</span>
+      </div>
+
+      <h2 className={styles.callout}>
+        Let’s make
+        <span>something useful.</span>
+      </h2>
+
+      <div className={styles.links}>
+        <a href="https://github.com/sjfoggo" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/scott-foggo/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href={Resume} target="_blank" rel="noopener noreferrer">Résumé ↗</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </footer>
   );
 }
 

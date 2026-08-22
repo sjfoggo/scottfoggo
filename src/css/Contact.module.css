@@ -1,28 +1,77 @@
-.backgroundContainer {
-  background-color: black;
-  color: white;
-}
-
-.iconContainer {
+.contact {
+  min-height: 78vh;
+  min-height: 78svh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  width: 60%;
+  padding: 28px var(--page-gutter) 25px;
+  background: var(--accent);
+  color: var(--ink);
 }
 
-.iconContainer i {
-  font-size: 8vw;
+.topline,
+.links {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 0.625rem;
+  line-height: 1.4;
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
 }
 
-@media (max-width: 768px) {
-  .iconContainer {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.callout {
+  margin: auto 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(4.8rem, 12vw, 11.2rem);
+  font-weight: 500;
+  line-height: 0.79;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+}
+
+.callout span {
+  display: block;
+  margin-left: clamp(24px, 15vw, 230px);
+  white-space: nowrap;
+}
+
+.links {
+  align-items: end;
+}
+
+.links a {
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+  transition: opacity 160ms ease;
+}
+
+.links a:hover {
+  opacity: 0.55;
+}
+
+@media (max-width: 700px) {
+  .contact {
+    min-height: 66svh;
   }
 
-  .iconContainer a {
-    margin: 20% 0;
+  .callout {
+    font-size: clamp(3.2rem, 13.6vw, 5.5rem);
+    line-height: 0.84;
+  }
+
+  .callout span {
+    margin: 8px 0 0;
+    white-space: normal;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 14px;
+  }
+
+  .links a:nth-child(even) {
+    justify-self: end;
   }
 }
