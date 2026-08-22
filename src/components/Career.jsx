@@ -2,15 +2,11 @@ import React from "react";
 import Column from "./common/Column";
 import Row from "./common/Row";
 import Image from "./common/Image";
-import Link from "./common/Link";
 import redwood from "../assets/Redwood.png";
 import bigSur from "../assets/BigSur.png";
 import yosemite from "../assets/Yosemite.png";
 
 import styles from "../css/Career.module.css";
-
-const PROPHET_LINK = "https://facebook.github.io/prophet/";
-const AX_LINK = "https://ax.dev/";
 
 function Career() {
   return (
@@ -65,10 +61,8 @@ function Career() {
           </div>
           <h2 className={styles.sectionHeading}>Tech</h2>
           <p className={styles.text}>
-            JavaScript (React, Relay/GraphQL, Redux), PHP (Hack), Python (
-            <Link color="pink" href={PROPHET_LINK}>Prophet</Link>,{" "}
-            <Link href={AX_LINK}>Adaptive Experimentation</Link>), C++, MySQL,
-            RocksDB
+            JavaScript (React, Relay/GraphQL, Redux), PHP (Hack), Python, C++,
+            MySQL, RocksDB
           </p>
           <h2 className={styles.sectionHeading}>Education</h2>
           <p className={styles.text}>
