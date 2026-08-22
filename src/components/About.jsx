@@ -2,13 +2,9 @@ import React from "react";
 import Row from "./common/Row";
 import Column from "./common/Column";
 import Image from "./common/Image";
-import Link from "./common/Link";
 import styles from "../css/About.module.css";
 
 import profile from "../assets/Profile.png";
-
-const ANALYTICS_LINK =
-  "https://www.gartner.com/en/information-technology/glossary/augmented-analytics";
 
 function About() {
   return (
@@ -29,8 +25,7 @@ function About() {
           <br />
           <br />
           <p>
-            Most recently, I've been working in the{" "}
-            <Link href={ANALYTICS_LINK}>"augmented analytics"</Link> space,
+            Most recently, I've been working in the "agentic analytics" space,
             building tooling for time series forecasting, monitoring, root cause
             analysis, and reporting.
           </p>
