@@ -10,12 +10,12 @@ import "../css/App.css";
 
 function App() {
   return (
-    <>
+    <div className="site">
       <Header />
       <Section id="about"><About /></Section>
       <Section id="career"><Career /></Section>
       <Section id="contact"><Contact /></Section>
-    </>
+    </div>
   );
 }
 
