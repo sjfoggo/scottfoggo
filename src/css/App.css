@@ -4,6 +4,10 @@
   --color-blue: #4A8BEB;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   transition: color 0.4s ease;
 }

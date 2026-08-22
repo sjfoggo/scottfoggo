@@ -1,9 +1,9 @@
-import React, { forwardRef } from "react";
+import React from "react";
 
 import styles from "../../css/Common.module.css";
 
-const Section = forwardRef((props, ref) => {
-  return <section ref={ref} className={styles.section}>{props.children}</section>;
-});
+const Section = ({ children, id }) => {
+  return <section id={id} className={styles.section}>{children}</section>;
+};
 
 export default Section;
