@@ -1,22 +1,77 @@
 :root {
-  --color-pink: #E270A4;
-  --color-yellow: #FFE354;
-  --color-blue: #4A8BEB;
+  --ink: #11110f;
+  --paper: #eeece6;
+  --paper-bright: #f7f5ef;
+  --muted: #8d8a83;
+  --accent: #315cff;
+  --line: rgba(17, 17, 15, 0.22);
+  --page-gutter: clamp(18px, 2.2vw, 32px);
+  --display-tight: -0.065em;
+  --label-tracking: 0.14em;
 }
 
-html {
-  scroll-behavior: smooth;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--ink);
 }
 
 a {
-  transition: color 0.4s ease;
+  color: inherit;
+  text-decoration: none;
 }
 
-img {
-  filter: grayscale(100%);
+img,
+video {
+  display: block;
+  max-width: 100%;
 }
 
-img:hover {
-  filter: none;
-  transition: all 0.2s linear;
+.site {
+  width: 100%;
+  overflow: clip;
+  background: var(--paper);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 0.625rem;
+  line-height: 1.4;
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+}
+
+.screenReaderOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
