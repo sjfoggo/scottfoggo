@@ -1,87 +1,67 @@
 import React from "react";
-import Column from "./common/Column";
-import Row from "./common/Row";
-import Image from "./common/Image";
-import redwood from "../assets/Redwood.png";
-import bigSur from "../assets/BigSur.png";
-import yosemite from "../assets/Yosemite.png";
-
 import styles from "../css/Career.module.css";
 
 function Career() {
   return (
-    <Row>
-      <Column>
-        <div className={styles.centeredBlock}>
-          <h2 className={styles.sectionHeading}>Recent Experience</h2>
-          <h3 className={styles.sectionSubHeading}>
-            Facebook | 2017 - Current
-          </h3>
-          <div className={styles.experienceBlock}>
-            <h4 className={styles.teamName}>Integrated Analytics</h4>
-            <ul className={styles.text}>
-              <li>
-                - Building tooling to support product analysis workflows (e.g.
-                metric monitoring, root cause analysis, and reporting)
-              </li>
-              <li>
-                - Worked on an internal forecasting platform, used by 100s of
-                data scientists, engineers and analysts across finance, product,
-                infra, etc.
-              </li>
-            </ul>
-          </div>
-          <div className={styles.experienceBlock}>
-            <h4 className={styles.teamName}>AR/VR</h4>
-            <ul className={styles.text}>
-              <li>
-                - Built out notifications infrastructure for 3rd-party devs;
-                ~10k notification/sec during peak load.
-              </li>
-              <li>
-                - Setup recommended app notifications resulting in increases to
-                weekly active users, timespent and monthly revenue for Oculus'
-                Gear VR platform.
-              </li>
-            </ul>
-          </div>
+    <div className={styles.experience}>
+      <header className={styles.heading}>
+        <span className={styles.number}>01</span>
+        <div>
+          <p className="eyebrow">Experience</p>
+          <h2>Selected experience</h2>
+        </div>
+      </header>
 
-          <h3 className={styles.sectionSubHeading}>Facebook (Intern) | 2016</h3>
-          <div className={styles.experienceBlock}>
-            <ul className={styles.text}>
-              <li>
-                - Added React Native support for an internal data visualization
-                library originally written in React
-              </li>
-              <li>
-                - Built a set of CLI tools for use during system outages of a
-                globally distributed config management system
-              </li>
-            </ul>
+      <div className={styles.rows}>
+        <article className={styles.row}>
+          <span className={styles.period}>2017—Now</span>
+          <div className={styles.role}>
+            <h3>Integrated Analytics</h3>
+            <span>Facebook</span>
           </div>
-          <h2 className={styles.sectionHeading}>Tech</h2>
-          <p className={styles.text}>
-            JavaScript (React, Relay/GraphQL, Redux), PHP (Hack), Python, C++,
-            MySQL, RocksDB
+          <p className={styles.summary}>
+            Building tools that support product-analysis workflows, including
+            forecasting, metric monitoring, root-cause analysis, and reporting.
           </p>
-          <h2 className={styles.sectionHeading}>Education</h2>
-          <p className={styles.text}>
-            Honours Computer Science, UWaterloo, 2017
+        </article>
+
+        <article className={styles.row}>
+          <span className={styles.period}>Earlier</span>
+          <div className={styles.role}>
+            <h3>AR / VR systems</h3>
+            <span>Facebook</span>
+          </div>
+          <p className={styles.summary}>
+            Built developer infrastructure for notifications at scale and product
+            systems for the Oculus Gear VR platform.
           </p>
-        </div>
-      </Column>
-      <Column noMobile>
-        <div className={styles.image}>
-          <Image alt="Redwoods" src={redwood} />
-        </div>
-        <div className={styles.image}>
-          <Image alt="Big Sur" src={bigSur} />
-        </div>
-        <div className={styles.image}>
-          <Image alt="Yosemite" src={yosemite} />
-        </div>
-      </Column>
-    </Row>
+        </article>
+
+        <article className={styles.row}>
+          <span className={styles.period}>2016</span>
+          <div className={styles.role}>
+            <h3>Software engineer intern</h3>
+            <span>Facebook</span>
+          </div>
+          <p className={styles.summary}>
+            Extended an internal visualization library to React Native and built
+            operational tools for distributed systems.
+          </p>
+        </article>
+
+        <article className={styles.row}>
+          <span className={styles.period}>2017</span>
+          <div className={styles.role}>
+            <h3>Honours Computer Science</h3>
+            <span>University of Waterloo</span>
+          </div>
+          <p className={styles.summary}>
+            A technical foundation shaped by systems, product work, and the
+            discipline of building useful things.
+          </p>
+        </article>
+      </div>
+    </div>
   );
 }
 
