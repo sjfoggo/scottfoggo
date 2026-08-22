@@ -2,7 +2,7 @@
   "name": "scottfoggo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://scottfoggo.com",
+  "homepage": "https://scottfoggo.com",
   "type": "module",
   "engines": {
     "node": ">=20.19.0 || >=22.12.0"
