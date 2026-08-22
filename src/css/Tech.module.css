@@ -1,0 +1,113 @@
+.technology {
+  padding: 30px var(--page-gutter) 0;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.title {
+  max-width: 1050px;
+  margin: 10vh 0 14vh;
+  font-size: clamp(4.7rem, 11vw, 10.8rem);
+  font-weight: 500;
+  line-height: 0.76;
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+}
+
+.title span {
+  display: block;
+  margin-left: 15vw;
+  color: var(--accent);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 calc(var(--page-gutter) * -1);
+  border-top: 1px solid rgba(238, 236, 230, 0.28);
+}
+
+.tool {
+  position: relative;
+  min-height: 230px;
+  padding: 19px 18px 22px;
+  border-right: 1px solid rgba(238, 236, 230, 0.28);
+  border-bottom: 1px solid rgba(238, 236, 230, 0.28);
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.tool:nth-child(3n) {
+  border-right: 0;
+}
+
+.tool:hover {
+  color: var(--ink);
+  background: var(--accent);
+}
+
+.index {
+  color: var(--muted);
+  font-size: 0.5625rem;
+  letter-spacing: var(--label-tracking);
+}
+
+.tool > div {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 21px;
+}
+
+.tool h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 3.3vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.tool p {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.5625rem;
+  letter-spacing: 0.11em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.tool:hover .index,
+.tool:hover p {
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .title {
+    margin: 12vh 0 13vh;
+    font-size: clamp(4.25rem, 20vw, 7rem);
+  }
+
+  .title span {
+    margin-left: 10vw;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tool {
+    min-height: 170px;
+  }
+
+  .tool:nth-child(3n) {
+    border-right: 1px solid rgba(238, 236, 230, 0.28);
+  }
+
+  .tool:nth-child(2n) {
+    border-right: 0;
+  }
+}
