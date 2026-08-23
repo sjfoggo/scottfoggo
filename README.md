@@ -24,11 +24,12 @@ npm run dev
 The `Build and deploy website` GitHub Actions workflow publishes production and staging together:
 
 - Pull requests into `master` must install, test, and build successfully.
-- A push to `master` or `codex/redesign` tests and builds both branches.
+- A push to `master` tests and builds both branches.
+- A push to `codex/redesign` requests that same deployment from `master`, keeping GitHub Pages environment protection intact.
 - `master` is published to [scottfoggo.com](https://scottfoggo.com).
 - `codex/redesign` is built with a `/dev/` asset base and published to [scottfoggo.com/dev/](https://scottfoggo.com/dev/).
 - The staging build includes a `noindex, nofollow` robots meta tag and is intentionally public.
-- Manual workflow runs can deploy only when run from `master` or `codex/redesign`.
+- Manual workflow runs can deploy only when run from `master`.
 
 One repository setting is required when enabling the workflow: under **Settings → Pages → Build and deployment**, set **Source** to **GitHub Actions**.
 

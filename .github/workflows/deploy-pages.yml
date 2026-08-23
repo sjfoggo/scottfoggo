@@ -8,6 +8,9 @@ on:
     branches:
       - master
       - codex/redesign
+  repository_dispatch:
+    types:
+      - deploy-staging
   workflow_dispatch:
 
 permissions:
@@ -42,11 +45,25 @@ jobs:
       - name: Build website
         run: npm run build
 
+  request-staging-deploy:
+    name: Request staging deployment
+    if: github.event_name == 'push' && github.ref == 'refs/heads/codex/redesign'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Dispatch deployment from master
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/dispatches" -f event_type=deploy-staging
+
   build-pages:
     name: Build production and staging
     if: >-
-      github.event_name != 'pull_request' &&
-      (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/codex/redesign')
+      github.event_name == 'repository_dispatch' ||
+      ((github.event_name == 'push' || github.event_name == 'workflow_dispatch') &&
+      github.ref == 'refs/heads/master')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
