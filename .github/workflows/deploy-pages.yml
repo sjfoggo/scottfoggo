@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - master
+      - codex/redesign
   workflow_dispatch:
 
 permissions:
@@ -17,8 +18,9 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    name: Test and build
+  validate:
+    name: Test proposed change
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -40,20 +42,80 @@ jobs:
       - name: Build website
         run: npm run build
 
+  build-pages:
+    name: Build production and staging
+    if: >-
+      github.event_name != 'pull_request' &&
+      (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/codex/redesign')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out production
+        uses: actions/checkout@v7
+        with:
+          ref: master
+          path: production
+
+      - name: Check out redesign
+        uses: actions/checkout@v7
+        with:
+          ref: codex/redesign
+          path: staging
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            production/package-lock.json
+            staging/package-lock.json
+
+      - name: Install production dependencies
+        working-directory: production
+        run: npm ci
+
+      - name: Test production
+        working-directory: production
+        run: npm test
+
+      - name: Build production
+        working-directory: production
+        run: npm run build
+
+      - name: Install staging dependencies
+        working-directory: staging
+        run: npm ci
+
+      - name: Test staging
+        working-directory: staging
+        run: npm test
+
+      - name: Build staging
+        working-directory: staging
+        env:
+          STAGING_NOINDEX: 'true'
+          VITE_BASE_PATH: /dev/
+        run: npm run build
+
+      - name: Compose GitHub Pages site
+        run: |
+          mkdir -p pages/dev
+          cp -R production/dist/. pages/
+          cp -R staging/dist/. pages/dev/
+          rm -f pages/dev/CNAME
+
       - name: Configure GitHub Pages
-        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
 
       - name: Upload GitHub Pages artifact
-        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: pages
 
   deploy:
-    name: Deploy to production
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
-    needs: build
+    name: Deploy production and staging
+    needs: build-pages
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
