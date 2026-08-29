@@ -18,7 +18,7 @@ const Header = () => {
   const closeIndex = () => setIsIndexOpen(false);
 
   return (
-    <header className={styles.hero} id="top">
+    <header className={styles.hero} id="top" data-index-open={isIndexOpen}>
       <video
         className={styles.video}
         autoPlay
@@ -41,21 +41,20 @@ const Header = () => {
       <div className={styles.scrim} />
 
       <div className={styles.topbar}>
-        <a className={styles.monogram} href="#top" aria-label="Scott Foggo, back to top">
-          SF
-        </a>
-        <div className={styles.topbarMeta}>
-          <span>Vancouver, Canada</span>
-          <button
-            className={styles.indexButton}
-            type="button"
-            aria-expanded={isIndexOpen}
-            aria-controls="site-index"
-            onClick={() => setIsIndexOpen(true)}
-          >
-            Index
-          </button>
-        </div>
+        <span className={styles.location}>Vancouver, Canada</span>
+        <button
+          className={styles.menuButton}
+          type="button"
+          aria-label={isIndexOpen ? "Close site index" : "Open site index"}
+          aria-expanded={isIndexOpen}
+          aria-controls="site-index"
+          data-open={isIndexOpen}
+          onClick={() => setIsIndexOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
 
       <h1 className={styles.name} aria-label="Scott Foggo">
@@ -64,9 +63,7 @@ const Header = () => {
       </h1>
 
       <div className={styles.footer}>
-        <span className={styles.role}>Software engineer<br />Product-minded builder</span>
         <span className={styles.status}><i />Available for thoughtful collaborations</span>
-        <a className={styles.scrollLink} href="#about">Scroll to enter</a>
       </div>
 
       <nav
@@ -76,8 +73,6 @@ const Header = () => {
         data-open={isIndexOpen}
         aria-hidden={!isIndexOpen}
       >
-        <span className={styles.panelMonogram}>SF</span>
-        <button className={styles.closeButton} type="button" onClick={closeIndex}>Close</button>
         <ol className={styles.indexLinks}>
           <li><span>01</span><a href="#about" onClick={closeIndex}>About</a></li>
           <li><span>02</span><a href="#career" onClick={closeIndex}>Experience</a></li>
