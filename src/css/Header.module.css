@@ -253,9 +253,3 @@
     font-size: clamp(3rem, 15vw, 5.5rem);
   }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .video {
-    display: none;
-  }
-}
