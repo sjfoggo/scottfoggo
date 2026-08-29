@@ -3,3 +3,4 @@ Source: https://www.pexels.com/video/view-of-calm-sea-horizon-5419061/
 License: https://www.pexels.com/license/
 Hosted video (mobile): https://videos.pexels.com/video-files/5419061/5419061-sd_960_540_25fps.mp4
 Hosted video (desktop): https://videos.pexels.com/video-files/5419061/5419061-hd_1920_1080_25fps.mp4
+Hosted poster: https://images.pexels.com/videos/5419061/4k50fps-above-sea-beautiful-girl-beautiful-sunset-5419061.jpeg?auto=compress&cs=tinysrgb&w=1920

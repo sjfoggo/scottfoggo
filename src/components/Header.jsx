@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import styles from "../css/Header.module.css";
 
+const OCEAN_POSTER =
+  "https://images.pexels.com/videos/5419061/4k50fps-above-sea-beautiful-girl-beautiful-sunset-5419061.jpeg?auto=compress&cs=tinysrgb&w=1920";
+
 const Header = () => {
   const [isIndexOpen, setIsIndexOpen] = useState(false);
 
@@ -19,6 +22,11 @@ const Header = () => {
 
   return (
     <header className={styles.hero} id="top" data-index-open={isIndexOpen}>
+      <div
+        className={styles.videoFallback}
+        style={{ backgroundImage: `url(${OCEAN_POSTER})` }}
+        aria-hidden="true"
+      />
       <video
         className={styles.video}
         autoPlay
@@ -26,6 +34,7 @@ const Header = () => {
         muted
         playsInline
         preload="metadata"
+        poster={OCEAN_POSTER}
         aria-hidden="true"
       >
         <source

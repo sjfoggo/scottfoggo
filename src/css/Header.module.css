@@ -8,16 +8,26 @@
   color: var(--paper-bright);
 }
 
-.video {
+.video,
+.videoFallback {
   position: absolute;
   inset: 0;
-  z-index: -3;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center center;
   filter: grayscale(1) contrast(1.1) brightness(0.8);
   transform: scale(1.015);
+}
+
+.videoFallback {
+  z-index: -4;
+  background-position: center center;
+  background-size: cover;
+}
+
+.video {
+  z-index: -3;
+  object-fit: cover;
+  object-position: center center;
 }
 
 .scrim {
@@ -219,8 +229,10 @@
     min-height: 88svh;
   }
 
-  .video {
+  .video,
+  .videoFallback {
     object-position: 54% center;
+    background-position: 54% center;
   }
 
   .location,
