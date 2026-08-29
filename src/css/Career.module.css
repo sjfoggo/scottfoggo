@@ -10,13 +10,6 @@
   padding: 0 var(--page-gutter) clamp(68px, 9vw, 128px);
 }
 
-.number {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3.25rem, 5vw, 4.8rem);
-  font-style: italic;
-  line-height: 0.88;
-}
-
 .heading h2 {
   margin: 38px 0 0;
   font-size: clamp(3rem, 7vw, 7rem);
@@ -82,7 +75,7 @@
   }
 
   .heading h2 {
-    margin-top: 30px;
+    margin-top: 0;
   }
 
   .row {

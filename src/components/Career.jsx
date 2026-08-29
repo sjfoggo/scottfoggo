@@ -5,11 +5,8 @@ function Career() {
   return (
     <div className={styles.experience}>
       <header className={styles.heading}>
-        <span className={styles.number}>01</span>
-        <div>
-          <p className="eyebrow">Experience</p>
-          <h2>Selected experience</h2>
-        </div>
+        <p className="eyebrow">Experience</p>
+        <h2>Selected experience</h2>
       </header>
 
       <div className={styles.rows}>
@@ -55,8 +52,8 @@ function Career() {
         <article className={styles.row}>
           <span className={styles.period}>2017—2019</span>
           <div className={styles.role}>
-            <h3>Oculus</h3>
-            <span>Facebook</span>
+            <h3>VR Engagement</h3>
+            <span>Oculus</span>
           </div>
           <p className={styles.summary}>
             Shipped and tested recommendation systems that increased weekly
@@ -65,7 +62,7 @@ function Career() {
         </article>
 
         <article className={styles.row}>
-          <span className={styles.period}>2017</span>
+          <span className={styles.period}>2012—2017</span>
           <div className={styles.role}>
             <h3>Honours Computer Science</h3>
             <span>University of Waterloo</span>
