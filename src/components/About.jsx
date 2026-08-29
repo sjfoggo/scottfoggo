@@ -11,10 +11,11 @@ function About() {
           useful, and human.
         </p>
         <p className={styles.detail}>
-          I like the moment an ambitious idea becomes something people trust. At
-          Meta, I’ve taken data products from prototype to company-wide adoption,
-          from foundational metrics to the context layer helping data agents make
-          better decisions.
+          I’m a software engineer focused on where product, data, and dependable
+          infrastructure meet—all with a decidedly human touch. I’ve taken data
+          products from prototype to company-wide adoption, from foundational
+          metrics to the contextual layer helping agents make better decisions
+          with data.
         </p>
       </div>
     </div>
