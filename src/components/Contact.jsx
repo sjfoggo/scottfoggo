@@ -7,7 +7,7 @@ function Contact() {
     <footer className={styles.contact}>
       <div className={styles.topline}>
         <span>Get in touch</span>
-        <span>04 / 04</span>
+        <span>03 / 03</span>
       </div>
 
       <h2 className={styles.callout}>

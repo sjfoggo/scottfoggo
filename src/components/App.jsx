@@ -3,7 +3,6 @@ import Header from "./Header";
 import Section from "./common/Section";
 import About from "./About";
 import Career from "./Career";
-import Tech from "./Tech";
 import Contact from "./Contact";
 
 import "../css/reset.css";
@@ -15,7 +14,6 @@ function App() {
       <Header />
       <Section id="about"><About /></Section>
       <Section id="career"><Career /></Section>
-      <Section id="technology"><Tech /></Section>
       <Section id="contact"><Contact /></Section>
     </div>
   );

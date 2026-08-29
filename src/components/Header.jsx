@@ -81,8 +81,7 @@ const Header = () => {
         <ol className={styles.indexLinks}>
           <li><span>01</span><a href="#about" onClick={closeIndex}>About</a></li>
           <li><span>02</span><a href="#career" onClick={closeIndex}>Experience</a></li>
-          <li><span>03</span><a href="#technology" onClick={closeIndex}>Technology</a></li>
-          <li><span>04</span><a href="#contact" onClick={closeIndex}>Contact</a></li>
+          <li><span>03</span><a href="#contact" onClick={closeIndex}>Contact</a></li>
         </ol>
       </nav>
     </header>

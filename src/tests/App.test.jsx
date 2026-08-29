@@ -10,6 +10,6 @@ test('renders the site navigation', () => {
   fireEvent.click(screen.getByRole('button', { name: /index/i }));
   expect(screen.getByRole('link', { name: /about/i })).toHaveAttribute('href', '#about');
   expect(screen.getByRole('link', { name: /experience/i })).toHaveAttribute('href', '#career');
-  expect(screen.getByRole('link', { name: /technology/i })).toHaveAttribute('href', '#technology');
+  expect(screen.queryByRole('link', { name: /technology/i })).not.toBeInTheDocument();
   expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute('href', '#contact');
 });
