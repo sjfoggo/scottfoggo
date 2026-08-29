@@ -11,10 +11,10 @@ function About() {
           useful, and human.
         </p>
         <p className={styles.detail}>
-          I’m a software engineer focused on the space where product thinking,
-          data, and dependable infrastructure meet. Most recently, that has meant
-          building tools for forecasting, monitoring, root-cause analysis, and
-          reporting.
+          I like the moment an ambitious idea becomes something people trust. At
+          Meta, I’ve taken data products from prototype to company-wide adoption,
+          from foundational metrics to the context layer helping data agents make
+          better decisions.
         </p>
       </div>
     </div>
