@@ -14,38 +14,53 @@ function Career() {
 
       <div className={styles.rows}>
         <article className={styles.row}>
-          <span className={styles.period}>2017—Now</span>
+          <span className={styles.period}>2022—Now</span>
+          <div className={styles.role}>
+            <h3>Semantic Models</h3>
+            <span>Meta</span>
+          </div>
+          <p className={styles.summary}>
+            Co-created Meta’s primary context layer for data agents and led its
+            platform team, scaling from prototype to 1,100+ models across 100+
+            teams in seven months.
+          </p>
+        </article>
+
+        <article className={styles.row}>
+          <span className={styles.period}>2022—Now</span>
+          <div className={styles.role}>
+            <h3>Metric 360</h3>
+            <span>Meta</span>
+          </div>
+          <p className={styles.summary}>
+            Led metrics catalog and governance systems adopted by 98%+ of data
+            science and data engineering teams, certifying 7,000+ critical
+            metrics and dashboards.
+          </p>
+        </article>
+
+        <article className={styles.row}>
+          <span className={styles.period}>2019—2022</span>
           <div className={styles.role}>
             <h3>Integrated Analytics</h3>
             <span>Facebook</span>
           </div>
           <p className={styles.summary}>
-            Building tools that support product-analysis workflows, including
-            forecasting, metric monitoring, root-cause analysis, and reporting.
+            Built forecasting and experimentation tooling that saved days of
+            manual data science work each quarter, and co-hosted a 200+ person
+            time-series summit.
           </p>
         </article>
 
         <article className={styles.row}>
-          <span className={styles.period}>Earlier</span>
+          <span className={styles.period}>2017—2019</span>
           <div className={styles.role}>
-            <h3>AR / VR systems</h3>
+            <h3>Oculus</h3>
             <span>Facebook</span>
           </div>
           <p className={styles.summary}>
-            Built developer infrastructure for notifications at scale and product
-            systems for the Oculus Gear VR platform.
-          </p>
-        </article>
-
-        <article className={styles.row}>
-          <span className={styles.period}>2016</span>
-          <div className={styles.role}>
-            <h3>Software engineer intern</h3>
-            <span>Facebook</span>
-          </div>
-          <p className={styles.summary}>
-            Extended an internal visualization library to React Native and built
-            operational tools for distributed systems.
+            Shipped and tested recommendation systems that increased weekly
+            actives, time spent, and monthly revenue across the Oculus platform.
           </p>
         </article>
 
