@@ -50,7 +50,6 @@ const Header = () => {
       <div className={styles.scrim} />
 
       <div className={styles.topbar}>
-        <span className={styles.location}>Vancouver, Canada</span>
         <button
           className={styles.menuButton}
           type="button"
@@ -70,10 +69,6 @@ const Header = () => {
         <span>Scott</span>
         <span>Foggo</span>
       </h1>
-
-      <div className={styles.footer}>
-        <span className={styles.status}><i />Available for thoughtful collaborations</span>
-      </div>
 
       <nav
         className={styles.indexPanel}
