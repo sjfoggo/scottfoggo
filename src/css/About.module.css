@@ -1,10 +1,21 @@
 .about {
+  position: relative;
   min-height: 92vh;
   display: grid;
   grid-template-columns: minmax(120px, 1fr) 4fr;
   gap: 32px;
   padding: 30px var(--page-gutter) 54px;
   border-bottom: 1px solid var(--line);
+}
+
+.counter {
+  position: absolute;
+  top: 30px;
+  right: var(--page-gutter);
+  font-size: 0.625rem;
+  line-height: 1.4;
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
 }
 
 .content {
@@ -41,6 +52,10 @@
     grid-template-columns: 1fr;
     gap: 54px;
     padding-top: 24px;
+  }
+
+  .counter {
+    top: 24px;
   }
 
   .content {

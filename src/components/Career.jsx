@@ -6,6 +6,7 @@ function Career() {
     <div className={styles.experience}>
       <header className={styles.heading}>
         <p className="eyebrow">Experience</p>
+        <span className={styles.counter}>02 / 03</span>
         <h2>Selected experience</h2>
       </header>
 

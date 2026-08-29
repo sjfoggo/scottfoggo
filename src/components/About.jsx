@@ -5,6 +5,7 @@ function About() {
   return (
     <div className={styles.about}>
       <p className="eyebrow">About</p>
+      <span className={styles.counter}>01 / 03</span>
       <div className={styles.content}>
         <p className={styles.statement}>
           I build software that makes <em>complex systems</em> feel clear,

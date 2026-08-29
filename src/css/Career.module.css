@@ -4,10 +4,21 @@
 }
 
 .heading {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(120px, 1fr) 4fr;
   gap: 32px;
   padding: 0 var(--page-gutter) clamp(68px, 9vw, 128px);
+}
+
+.counter {
+  position: absolute;
+  top: 0;
+  right: var(--page-gutter);
+  font-size: 0.625rem;
+  line-height: 1.4;
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
 }
 
 .heading h2 {
