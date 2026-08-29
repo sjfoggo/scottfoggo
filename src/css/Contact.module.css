@@ -23,7 +23,7 @@
 .callout {
   margin: auto 0;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: clamp(4.8rem, 12vw, 11.2rem);
+  font-size: clamp(4.4rem, 8.7vw, 9rem);
   font-weight: 500;
   line-height: 0.79;
   letter-spacing: -0.075em;
@@ -32,7 +32,7 @@
 
 .callout span {
   display: block;
-  margin-left: clamp(24px, 15vw, 230px);
+  margin-left: clamp(16px, 4vw, 72px);
   white-space: nowrap;
 }
 
