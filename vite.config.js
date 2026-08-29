@@ -17,6 +17,20 @@ export default defineConfig(() => {
         },
       },
     ],
+    build: {
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/site.js',
+          chunkFileNames: 'assets/[name].js',
+          assetFileNames(assetInfo) {
+            const names = assetInfo.names || [assetInfo.name || 'asset'];
+            return names.some((name) => name.endsWith('.css'))
+              ? 'assets/site.css'
+              : 'assets/[name][extname]';
+          },
+        },
+      },
+    },
     test: {
       environment: 'jsdom',
       setupFiles: './src/tests/setupTests.js',
