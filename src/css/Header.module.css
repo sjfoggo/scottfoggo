@@ -139,7 +139,7 @@
 
 .name span {
   opacity: 0;
-  animation: nameMaterialize 30s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+  animation: nameMaterialize 25s cubic-bezier(0.45, 0, 0.55, 1) forwards;
 }
 
 .name span:last-child {
