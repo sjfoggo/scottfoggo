@@ -32,9 +32,3 @@ button {
   color: #eeece6;
   background: #315cff;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
