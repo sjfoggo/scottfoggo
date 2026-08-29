@@ -14,7 +14,7 @@ function Career() {
 
       <div className={styles.rows}>
         <article className={styles.row}>
-          <span className={styles.period}>2022—Now</span>
+          <span className={styles.period}>2025—Now</span>
           <div className={styles.role}>
             <h3>Semantic Models</h3>
             <span>Meta</span>
@@ -27,7 +27,7 @@ function Career() {
         </article>
 
         <article className={styles.row}>
-          <span className={styles.period}>2022—Now</span>
+          <span className={styles.period}>2022—2025</span>
           <div className={styles.role}>
             <h3>Metric 360</h3>
             <span>Meta</span>
