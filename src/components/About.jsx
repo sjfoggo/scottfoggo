@@ -12,11 +12,11 @@ function About() {
           useful, and human.
         </p>
         <p className={styles.detail}>
-          I’m a software engineer focused on where product, data, and dependable
-          infrastructure meet—all with a decidedly human touch. I’ve taken data
-          products from prototype to company-wide adoption, from foundational
-          metrics to the contextual layer helping agents make better decisions
-          with data.
+          I’m a software engineer working at the intersection of product, data,
+          and dependable infrastructure—all with a decidedly human touch. I’ve
+          taken data products from prototype to company-wide adoption, from
+          foundational metrics to the contextual layer helping agents make
+          better decisions with data.
         </p>
       </div>
     </div>
