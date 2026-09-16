@@ -12,13 +12,13 @@ function ConceptNav({ active }) {
           href={`${BASE}concept/tide/`}
           aria-current={active === "tide" ? "page" : undefined}
         >
-          01 Tide / Signal
+          Tide / Signal
         </a>
         <a
           href={`${BASE}concept/lab/`}
           aria-current={active === "lab" ? "page" : undefined}
         >
-          05 Quiet Lab
+          Quiet Lab
         </a>
       </div>
     </nav>

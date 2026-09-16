@@ -1,237 +1,155 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "motion/react";
 import ConceptNav from "./ConceptNav";
+import Resume from "../assets/ScottFoggo-Resume.pdf";
 import styles from "../css/Concepts.module.css";
 
 const OCEAN_POSTER =
   "https://images.pexels.com/videos/5419061/4k50fps-above-sea-beautiful-girl-beautiful-sunset-5419061.jpeg?auto=compress&cs=tinysrgb&w=1920";
 
-const discoveries = [
+const OCEAN_VIDEO =
+  "https://videos.pexels.com/video-files/5419061/5419061-hd_1920_1080_25fps.mp4";
+
+const currents = [
+  {
+    name: "Clarity",
+    statement: "Complex systems should feel obvious in the hand.",
+    note: "I work where product, data, and dependable infrastructure meet.",
+  },
   {
     name: "Context",
-    title: "Meaning is infrastructure.",
-    detail: "A contextual layer that helps agents reason with data instead of merely retrieving it.",
-    x: 24,
-    y: 62,
+    statement: "Shared meaning is infrastructure.",
+    note: "I helped take a semantic layer from prototype to 1,100 models across more than 100 teams.",
   },
   {
     name: "Trust",
-    title: "Dependability can be felt.",
-    detail: "Good systems expose lineage, failure, and uncertainty without overwhelming the person using them.",
-    x: 54,
-    y: 42,
+    statement: "Useful tools reveal how they know.",
+    note: "Metrics, monitoring, lineage, and uncertainty made legible without losing the human thread.",
   },
   {
-    name: "Prototype",
-    title: "Small experiments reveal the edge.",
-    detail: "A rotating lab for ideas that are easier to understand by touching than by describing.",
-    x: 78,
-    y: 70,
+    name: "Contact",
+    statement: "Let’s make something useful.",
+    note: "A conversation is a good place to begin.",
   },
 ];
 
+const wrap = (value, length) => (value + length) % length;
+
 function QuietLabConcept() {
-  const fieldRef = useRef(null);
-  const canvasRef = useRef(null);
-  const ripplesRef = useRef([]);
-  const pointerRef = useRef({ x: 0.5, y: 0.5, lastSpawn: 0 });
   const [active, setActive] = useState(0);
-  const [hasMoved, setHasMoved] = useState(false);
+  const [direction, setDirection] = useState(1);
+  const reducedMotion = useReducedMotion();
+  const pointerX = useMotionValue(50);
+  const pointerY = useMotionValue(50);
+  const smoothX = useSpring(pointerX, { stiffness: 70, damping: 18 });
+  const smoothY = useSpring(pointerY, { stiffness: 70, damping: 18 });
+  const refraction = useMotionTemplate`radial-gradient(circle at ${smoothX}% ${smoothY}%, rgba(49, 92, 255, .1) 0%, rgba(49, 92, 255, .28) 13%, rgba(3, 10, 16, .06) 28%, rgba(3, 10, 16, .54) 74%)`;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const field = fieldRef.current;
-    if (!canvas || !field) return undefined;
-
-    const context = canvas.getContext("2d");
-    let width = 0;
-    let height = 0;
-    let frame;
-
-    const resize = () => {
-      const bounds = field.getBoundingClientRect();
-      const ratio = Math.min(window.devicePixelRatio || 1, 2);
-      width = bounds.width;
-      height = bounds.height;
-      canvas.width = Math.max(1, Math.round(width * ratio));
-      canvas.height = Math.max(1, Math.round(height * ratio));
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    };
-
-    const draw = (time) => {
-      context.clearRect(0, 0, width, height);
-
-      context.lineWidth = 1;
-      for (let line = 0; line < 18; line += 1) {
-        const baseline = height * (0.3 + line * 0.045);
-        context.beginPath();
-        for (let x = -20; x <= width + 20; x += 12) {
-          const proximity = 1 - Math.min(1, Math.abs(x - pointerRef.current.x * width) / Math.max(width * 0.45, 1));
-          const wave = Math.sin(x * 0.018 + time * 0.00045 + line * 0.55) * (2 + proximity * 4);
-          const y = baseline + wave;
-          if (x === -20) context.moveTo(x, y);
-          else context.lineTo(x, y);
-        }
-        context.strokeStyle = `rgba(247, 245, 239, ${0.025 + line * 0.002})`;
-        context.stroke();
-      }
-
-      ripplesRef.current = ripplesRef.current.filter((ripple) => {
-        const age = (time - ripple.start) / ripple.duration;
-        if (age >= 1) return false;
-
-        const radius = ripple.strength * (24 + age * Math.min(width, height) * 0.34);
-        context.beginPath();
-        context.arc(ripple.x * width, ripple.y * height, radius, 0, Math.PI * 2);
-        context.strokeStyle = `rgba(${ripple.blue ? "70, 105, 255" : "247, 245, 239"}, ${(1 - age) * 0.48})`;
-        context.lineWidth = 0.8 + ripple.strength;
-        context.stroke();
-        return true;
-      });
-
-      frame = requestAnimationFrame(draw);
-    };
-
-    resize();
-    window.addEventListener("resize", resize);
-    frame = requestAnimationFrame(draw);
-
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
-  const spawnRipple = (x, y, strength = 1, blue = false) => {
-    ripplesRef.current.push({
-      x,
-      y,
-      strength,
-      blue,
-      start: performance.now(),
-      duration: 1800 + strength * 600,
-    });
+  const moveTo = (next, nextDirection = 1) => {
+    setDirection(nextDirection);
+    setActive(wrap(next, currents.length));
   };
 
-  const updatePointer = (event) => {
-    const field = fieldRef.current;
-    if (!field) return;
-
-    const bounds = field.getBoundingClientRect();
-    const x = Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width));
-    const y = Math.min(1, Math.max(0, (event.clientY - bounds.top) / bounds.height));
-    const now = performance.now();
-
-    field.style.setProperty("--pointer-x", `${x * 100}%`);
-    field.style.setProperty("--pointer-y", `${y * 100}%`);
-    pointerRef.current.x = x;
-    pointerRef.current.y = y;
-
-    if (now - pointerRef.current.lastSpawn > 180) {
-      spawnRipple(x, y, 0.45);
-      pointerRef.current.lastSpawn = now;
-    }
-
-    let closest = active;
-    let closestDistance = 0.18;
-    discoveries.forEach((discovery, index) => {
-      const distance = Math.hypot(x - discovery.x / 100, y - discovery.y / 100);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closest = index;
-      }
-    });
-    setActive(closest);
-    setHasMoved(true);
-  };
-
-  const activateDiscovery = (index) => {
-    const discovery = discoveries[index];
-    setActive(index);
-    setHasMoved(true);
-    spawnRipple(discovery.x / 100, discovery.y / 100, 1.5, true);
+  const updateRefraction = (event) => {
+    const bounds = event.currentTarget.getBoundingClientRect();
+    pointerX.set(((event.clientX - bounds.left) / bounds.width) * 100);
+    pointerY.set(((event.clientY - bounds.top) / bounds.height) * 100);
   };
 
   return (
-    <main className={styles.labPage}>
+    <main className={styles.openWaterPage}>
       <ConceptNav active="lab" />
 
-      <section
-        className={styles.labField}
-        ref={fieldRef}
-        onPointerMove={updatePointer}
-        onPointerDown={(event) => {
-          updatePointer(event);
-          spawnRipple(pointerRef.current.x, pointerRef.current.y, 1.7, true);
+      <motion.section
+        className={styles.openWater}
+        aria-label="Quiet Lab concept"
+        onPointerMove={updateRefraction}
+        drag={reducedMotion ? false : "x"}
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.12}
+        onDragEnd={(_, info) => {
+          if (info.offset.x < -45) moveTo(active + 1, 1);
+          if (info.offset.x > 45) moveTo(active - 1, -1);
         }}
-        aria-label="Interactive Quiet Lab concept"
       >
         <div
-          className={styles.labPoster}
+          className={styles.oceanPoster}
           style={{ backgroundImage: `url(${OCEAN_POSTER})` }}
           aria-hidden="true"
         />
         <video
-          className={styles.labVideo}
+          className={styles.currentFilm}
           autoPlay
           loop
           muted
           playsInline
           poster={OCEAN_POSTER}
+          preload="auto"
           aria-hidden="true"
         >
-          <source
-            src="https://videos.pexels.com/video-files/5419061/5419061-sd_960_540_25fps.mp4"
-            type="video/mp4"
-            media="(max-width: 767px)"
-          />
-          <source
-            src="https://videos.pexels.com/video-files/5419061/5419061-hd_1920_1080_25fps.mp4"
-            type="video/mp4"
-          />
+          <source src={OCEAN_VIDEO} type="video/mp4" />
         </video>
-        <div className={styles.labShade} aria-hidden="true" />
-        <canvas className={styles.rippleCanvas} ref={canvasRef} aria-hidden="true" />
-        <div className={styles.pointerLight} aria-hidden="true" />
+        <div className={styles.currentGrade} aria-hidden="true" />
+        <motion.div
+          className={styles.refractionField}
+          style={{ background: refraction }}
+          aria-hidden="true"
+        />
+        <div className={styles.surfaceGrain} aria-hidden="true" />
 
-        <header className={styles.labHeader}>
-          <p className={styles.conceptEyebrow}>Scott Foggo / Quiet Lab</p>
-          <p className={styles.labInstruction}>{hasMoved ? "Follow the signal" : "Move to disturb"}</p>
-        </header>
-
-        <div className={styles.labStatement}>
-          <p>Useful systems</p>
-          <h1>should feel <em>calm.</em></h1>
-        </div>
-
-        {discoveries.map((discovery, index) => (
-          <button
-            className={styles.discoveryNode}
-            style={{ left: `${discovery.x}%`, top: `${discovery.y}%` }}
-            data-active={active === index}
-            type="button"
-            key={discovery.name}
-            onFocus={() => activateDiscovery(index)}
-            onClick={() => activateDiscovery(index)}
-            aria-label={`Reveal ${discovery.name}`}
+        <AnimatePresence mode="wait" custom={direction} initial={false}>
+          <motion.article
+            className={styles.currentThought}
+            key={currents[active].name}
+            custom={direction}
+            style={{ y: "-50%" }}
+            initial={reducedMotion ? { opacity: 0 } : { opacity: 0, x: direction * 100, filter: "blur(12px)" }}
+            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, x: direction * -90, filter: "blur(10px)" }}
+            transition={{ duration: reducedMotion ? 0.01 : 1.15, ease: [0.22, 1, 0.36, 1] }}
           >
-            <span />
-            <small>{String(index + 1).padStart(2, "0")}</small>
-          </button>
-        ))}
+            <p>{currents[active].statement}</p>
+            <span>{currents[active].note}</span>
+            {active === currents.length - 1 && (
+              <div className={styles.waterLinks}>
+                <a href="https://github.com/sjfoggo" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/scott-foggo/" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href={Resume} target="_blank" rel="noreferrer">Résumé</a>
+              </div>
+            )}
+          </motion.article>
+        </AnimatePresence>
 
-        <aside className={styles.discoveryPanel} aria-live="polite">
-          <p>{String(active + 1).padStart(2, "0")} / 03 · {discoveries[active].name}</p>
-          <h2>{discoveries[active].title}</h2>
-          <span>{discoveries[active].detail}</span>
-        </aside>
+        <nav className={styles.currentNav} aria-label="Explore currents">
+          {currents.map((current, index) => (
+            <button
+              type="button"
+              aria-current={active === index ? "step" : undefined}
+              onClick={() => moveTo(index, index >= active ? 1 : -1)}
+              key={current.name}
+            >
+              {current.name}
+            </button>
+          ))}
+        </nav>
 
-        <footer className={styles.labFooter}>
-          <span>Pointer / touch / keyboard</span>
-          <a href={`${import.meta.env.BASE_URL}concept/tide/`}>Tide / Signal →</a>
-        </footer>
-      </section>
+        <button
+          className={styles.nextCurrent}
+          type="button"
+          onClick={() => moveTo(active + 1, 1)}
+          aria-label="Move to the next current"
+        >
+          <span>{currents[wrap(active + 1, currents.length)].name}</span>
+          <span aria-hidden="true">→</span>
+        </button>
+      </motion.section>
     </main>
   );
 }

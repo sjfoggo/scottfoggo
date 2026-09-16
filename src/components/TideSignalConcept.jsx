@@ -1,149 +1,172 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import ConceptNav from "./ConceptNav";
+import Resume from "../assets/ScottFoggo-Resume.pdf";
 import styles from "../css/Concepts.module.css";
 
 const OCEAN_POSTER =
   "https://images.pexels.com/videos/5419061/4k50fps-above-sea-beautiful-girl-beautiful-sunset-5419061.jpeg?auto=compress&cs=tinysrgb&w=1920";
 
-const signals = [
+const OCEAN_VIDEO =
+  "https://videos.pexels.com/video-files/5419061/5419061-hd_1920_1080_25fps.mp4";
+
+const chapters = [
   {
-    number: "01",
-    name: "Context",
-    title: "Give complex systems a shared language.",
-    detail: "Semantic layers that help people—and agents—make better decisions with data.",
+    at: 0.22,
+    className: styles.soundingNorth,
+    line: "I make complex systems feel clear, useful, and human.",
+    aside: "Product thinking, data, and dependable infrastructure in one practice.",
   },
   {
-    number: "02",
-    name: "Systems",
-    title: "Make the invisible inspectable.",
-    detail: "Metrics, monitoring, and infrastructure designed to earn trust through use.",
+    at: 0.46,
+    className: styles.soundingWest,
+    line: "From foundational metrics to shared meaning.",
+    aside: "Products adopted across a company, and context that helps agents reason with data.",
   },
   {
-    number: "03",
-    name: "Human touch",
-    title: "Build for confidence, not dashboards.",
-    detail: "Technical depth matters most when the experience still feels clear and human.",
+    at: 0.69,
+    className: styles.soundingEast,
+    line: "The deeper the system, the calmer it should feel.",
+    aside: "Clear lineage, visible uncertainty, and a decidedly human touch.",
   },
 ];
 
-const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+function Sounding({ chapter, progress, reducedMotion }) {
+  const start = chapter.at;
+  const opacity = useTransform(
+    progress,
+    [start - 0.12, start - 0.035, start + 0.07, start + 0.15],
+    [0, 1, 1, 0],
+  );
+  const y = useTransform(
+    progress,
+    [start - 0.12, start + 0.15],
+    reducedMotion ? [0, 0] : [46, -34],
+  );
+  const filter = useTransform(
+    progress,
+    [start - 0.12, start - 0.03, start + 0.1, start + 0.15],
+    reducedMotion
+      ? ["blur(0px)", "blur(0px)", "blur(0px)", "blur(0px)"]
+      : ["blur(12px)", "blur(0px)", "blur(0px)", "blur(9px)"],
+  );
+
+  return (
+    <motion.article
+      className={`${styles.sounding} ${chapter.className}`}
+      style={{ opacity, y, filter }}
+    >
+      <p>{chapter.line}</p>
+      <span>{chapter.aside}</span>
+    </motion.article>
+  );
+}
 
 function TideSignalConcept() {
   const sceneRef = useRef(null);
-  const [progress, setProgress] = useState(0);
+  const reducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sceneRef,
+    offset: ["start start", "end end"],
+  });
 
-  useEffect(() => {
-    let animationFrame;
-
-    const updateProgress = () => {
-      const scene = sceneRef.current;
-      if (!scene) return;
-
-      const rect = scene.getBoundingClientRect();
-      const distance = Math.max(1, scene.offsetHeight - window.innerHeight);
-      const nextProgress = clamp(-rect.top / distance);
-      setProgress((current) => Math.abs(current - nextProgress) > 0.002 ? nextProgress : current);
-    };
-
-    const requestUpdate = () => {
-      cancelAnimationFrame(animationFrame);
-      animationFrame = requestAnimationFrame(updateProgress);
-    };
-
-    updateProgress();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      cancelAnimationFrame(animationFrame);
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-    };
-  }, []);
-
-  const rise = clamp((progress - 0.08) / 0.78);
-  const tideTop = 100 - rise * 82;
-  const activeSignal = Math.min(2, Math.floor(clamp((progress - 0.18) / 0.72) * 3));
-  const heroOpacity = 1 - clamp((progress - 0.04) / 0.28);
+  const videoScale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reducedMotion ? [1.06, 1.06] : [1.04, 1.2],
+  );
+  const videoY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    reducedMotion ? ["0%", "0%"] : ["0%", "4%"],
+  );
+  const blueDepth = useTransform(scrollYProgress, [0.1, 0.84], [0.08, 0.72]);
+  const introOpacity = useTransform(scrollYProgress, [0, 0.1, 0.19], [1, 1, 0]);
+  const introY = useTransform(
+    scrollYProgress,
+    [0, 0.19],
+    reducedMotion ? [0, 0] : [0, -44],
+  );
+  const finalOpacity = useTransform(scrollYProgress, [0.82, 0.91], [0, 1]);
+  const finalY = useTransform(
+    scrollYProgress,
+    [0.82, 0.94],
+    reducedMotion ? [0, 0] : [40, 0],
+  );
+  const nameTracking = useTransform(
+    scrollYProgress,
+    [0, 0.15],
+    reducedMotion ? ["-0.065em", "-0.065em"] : ["-0.065em", "0.015em"],
+  );
 
   return (
-    <main className={styles.conceptPage} data-concept="tide">
+    <main className={styles.immersivePage} data-concept="tide">
       <ConceptNav active="tide" />
 
-      <section className={styles.tideScene} ref={sceneRef} aria-label="Tide and Signal concept">
-        <div
-          className={styles.tideSticky}
-          style={{
-            "--tide-top": `${tideTop}%`,
-            "--hero-opacity": heroOpacity,
-            "--ocean-scale": 1 + progress * 0.08,
-          }}
-        >
+      <section className={styles.depthJourney} ref={sceneRef} aria-label="Tide and Signal concept">
+        <div className={styles.depthViewport}>
           <div
             className={styles.oceanPoster}
             style={{ backgroundImage: `url(${OCEAN_POSTER})` }}
             aria-hidden="true"
           />
-          <video
-            className={styles.oceanVideo}
+          <motion.video
+            className={styles.oceanFilm}
             autoPlay
             loop
             muted
             playsInline
             poster={OCEAN_POSTER}
+            preload="auto"
+            style={{ scale: videoScale, y: videoY }}
             aria-hidden="true"
           >
-            <source
-              src="https://videos.pexels.com/video-files/5419061/5419061-sd_960_540_25fps.mp4"
-              type="video/mp4"
-              media="(max-width: 767px)"
-            />
-            <source
-              src="https://videos.pexels.com/video-files/5419061/5419061-hd_1920_1080_25fps.mp4"
-              type="video/mp4"
-            />
-          </video>
-          <div className={styles.oceanScrim} aria-hidden="true" />
+            <source src={OCEAN_VIDEO} type="video/mp4" />
+          </motion.video>
+          <div className={styles.monochromeWash} aria-hidden="true" />
+          <motion.div
+            className={styles.depthBlue}
+            style={{ opacity: blueDepth }}
+            aria-hidden="true"
+          />
+          <div className={styles.surfaceGrain} aria-hidden="true" />
 
-          <div className={styles.tideHero}>
-            <p className={styles.conceptEyebrow}>Scott Foggo / Product engineer</p>
-            <h1><span>Scott</span><span>Foggo</span></h1>
-            <p className={styles.scrollPrompt}>Scroll with the tide <span aria-hidden="true">↓</span></p>
-          </div>
+          <motion.header
+            className={styles.depthOpening}
+            style={{ opacity: introOpacity, y: introY }}
+          >
+            <motion.h1 style={{ letterSpacing: nameTracking }}>
+              Scott Foggo
+            </motion.h1>
+            <p>Software engineer</p>
+          </motion.header>
 
-          <div className={styles.tidePanel}>
-            <div className={styles.tideEdge} aria-hidden="true" />
-            <div className={styles.signalStage} aria-live="polite">
-              <p className={styles.signalCounter}>{signals[activeSignal].number} / 03</p>
-              <p className={styles.signalName}>{signals[activeSignal].name}</p>
-              <h2>{signals[activeSignal].title}</h2>
-              <p className={styles.signalDetail}>{signals[activeSignal].detail}</p>
+          {chapters.map((chapter) => (
+            <Sounding
+              chapter={chapter}
+              progress={scrollYProgress}
+              reducedMotion={reducedMotion}
+              key={chapter.line}
+            />
+          ))}
+
+          <motion.footer
+            className={styles.depthClosing}
+            style={{ opacity: finalOpacity, y: finalY }}
+          >
+            <p>Let’s make something useful.</p>
+            <div>
+              <a href="https://github.com/sjfoggo" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/scott-foggo/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href={Resume} target="_blank" rel="noreferrer">Résumé</a>
             </div>
-
-            <ol className={styles.signalRail}>
-              {signals.map((signal, index) => (
-                <li key={signal.name} data-active={index === activeSignal}>
-                  <span>{signal.number}</span>
-                  <strong>{signal.name}</strong>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <div className={styles.depthMeter} aria-hidden="true">
-            <span style={{ height: `${Math.max(2, progress * 100)}%` }} />
-          </div>
+          </motion.footer>
         </div>
-      </section>
-
-      <section className={styles.tideOutro}>
-        <p className={styles.conceptEyebrow}>What follows</p>
-        <h2>Two case studies.<br />A living lab.<br /><em>No résumé wall.</em></h2>
-        <p>
-          Each signal becomes a doorway into one carefully told project—what changed,
-          what was difficult, and why it mattered.
-        </p>
-        <a href={`${import.meta.env.BASE_URL}concept/lab/`}>Enter Quiet Lab →</a>
       </section>
     </main>
   );
