@@ -1,5 +1,24 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { copyFileSync, mkdirSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+
+const conceptRoutes = ['concept/tide', 'concept/lab'];
+
+function conceptRouteEntrypoints() {
+  return {
+    name: 'concept-route-entrypoints',
+    closeBundle() {
+      const source = resolve('dist/index.html');
+
+      conceptRoutes.forEach((route) => {
+        const destination = resolve('dist', route, 'index.html');
+        mkdirSync(dirname(destination), { recursive: true });
+        copyFileSync(source, destination);
+      });
+    },
+  };
+}
 
 export default defineConfig(() => {
   const noIndex = process.env.STAGING_NOINDEX === 'true';
@@ -8,6 +27,7 @@ export default defineConfig(() => {
     base: process.env.VITE_BASE_PATH || '/',
     plugins: [
       react(),
+      conceptRouteEntrypoints(),
       {
         name: 'staging-noindex',
         transformIndexHtml() {
