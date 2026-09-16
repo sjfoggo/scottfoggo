@@ -12,6 +12,9 @@
 /build
 /dist
 
+# licensed/local-only type proofs
+/public/fonts-private/
+
 # misc
 .DS_Store
 .env.local

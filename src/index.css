@@ -1,5 +1,18 @@
+@font-face {
+  font-family: "PP Mori";
+  src:
+    url("/fonts-private/PPMori-Variable.woff2") format("woff2"),
+    url("https://pangrampangram.com/cdn/shop/files/PPMori-Variable_1b739cad-396d-457b-a4e6-addb15e8e13b.woff2?v=1796808650887107637") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
 :root {
-  font-family: Arial, Helvetica, sans-serif;
+  --font-sans: "PP Mori", Arial, Helvetica, sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+
+  font-family: var(--font-sans);
   color: #11110f;
   background: #eeece6;
   font-synthesis: none;
