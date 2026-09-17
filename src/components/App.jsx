@@ -5,7 +5,6 @@ import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
 import TideSignalConcept from "./TideSignalConcept";
-import QuietLabConcept from "./QuietLabConcept";
 
 import "../css/reset.css";
 import "../css/App.css";
@@ -13,12 +12,8 @@ import "../css/App.css";
 function App() {
   const path = window.location.pathname.replace(/\/+$/, "");
 
-  if (path.endsWith("/concept/tide")) {
+  if (path.endsWith("/concept/tide") || path.endsWith("/concept/lab")) {
     return <TideSignalConcept />;
-  }
-
-  if (path.endsWith("/concept/lab")) {
-    return <QuietLabConcept />;
   }
 
   return (

@@ -1,427 +1,334 @@
-.immersivePage,
-.openWaterPage {
-  --ocean-white: #f6f7f4;
-  --ocean-blue: #315cff;
+.tidalPage {
+  --field-bone: #e4e7e2;
+  --field-muted: rgba(228, 231, 226, 0.58);
+  --field-blue: #315cff;
+  position: relative;
   width: 100%;
   min-width: 320px;
   overflow: clip;
   background: #03090d;
-  color: var(--ocean-white);
+  color: var(--field-bone);
 }
 
 .conceptNav {
   position: fixed;
-  top: 20px;
+  top: 18px;
   right: var(--page-gutter);
   left: var(--page-gutter);
   z-index: 50;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  font-size: 0.68rem;
+  height: 32px;
+  font-size: 0.66rem;
   line-height: 1;
-  letter-spacing: 0.08em;
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
-}
-
-.conceptLinks {
-  display: flex;
-  gap: 22px;
+  letter-spacing: 0.055em;
+  color: rgba(228, 231, 226, 0.54);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.68);
 }
 
 .conceptNav a {
-  padding: 7px 0;
-  color: rgba(246, 247, 244, 0.62);
-  transition: color 300ms ease;
-}
-
-.conceptNav a:hover,
-.conceptNav a:focus-visible,
-.conceptNav a[aria-current="page"] {
-  color: var(--ocean-white);
-}
-
-.conceptNav a[aria-current="page"] {
-  box-shadow: inset 0 -1px var(--ocean-blue);
-}
-
-.oceanPoster,
-.oceanFilm,
-.currentFilm {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.oceanPoster {
-  z-index: -6;
-  background-position: center;
-  background-size: cover;
-  filter: grayscale(1) contrast(1.12) brightness(0.66);
-}
-
-.depthJourney {
   position: relative;
-  height: 620svh;
-  background: #050b0f;
+  padding: 8px 0;
+  color: var(--field-bone);
 }
 
-.depthViewport {
+.conceptNav a::after {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  background: var(--field-blue);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  content: "";
+}
+
+.conceptNav a:hover::after,
+.conceptNav a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.fieldJourney {
+  position: relative;
+  height: 600svh;
+  background: #03090d;
+}
+
+.fieldViewport {
   position: sticky;
   top: 0;
   height: 100vh;
   min-height: 100dvh;
   overflow: hidden;
   isolation: isolate;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(13, 30, 43, 0.54), transparent 58%),
+    #03090d;
 }
 
-.oceanFilm {
-  z-index: -5;
-  max-width: none;
-  filter: grayscale(1) contrast(1.16) brightness(0.72);
-  transform-origin: 50% 45%;
-  will-change: transform;
-}
-
-.monochromeWash,
-.depthBlue,
-.currentGrade,
-.refractionField,
-.surfaceGrain {
+.fieldPoster,
+.fieldFallbackVideo,
+.tidalCanvas,
+.fieldVignette,
+.fieldGrain,
+.staticOcean,
+.staticGrade {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-}
-
-.monochromeWash {
-  z-index: -4;
-  background:
-    radial-gradient(circle at 50% 36%, transparent 15%, rgba(0, 0, 0, 0.18) 65%, rgba(0, 0, 0, 0.55) 120%),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.18), transparent 42%, rgba(0, 0, 0, 0.48));
-}
-
-.depthBlue {
-  z-index: -3;
-  background:
-    linear-gradient(to bottom, rgba(7, 22, 29, 0.08), rgba(3, 22, 36, 0.7)),
-    #0a2745;
-  mix-blend-mode: multiply;
-}
-
-.surfaceGrain {
-  z-index: -1;
-  opacity: 0.16;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
-  mix-blend-mode: soft-light;
-}
-
-.depthOpening {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 68px var(--page-gutter) 28px;
-}
-
-.depthOpening h1 {
   width: 100%;
-  margin: 0;
-  font-size: clamp(4.6rem, 13.7vw, 13.4rem);
-  font-weight: 500;
-  line-height: 0.8;
-  text-align: center;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.depthOpening > p {
-  position: absolute;
-  bottom: 28px;
-  left: var(--page-gutter);
-  margin: 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-}
-
-.sounding {
-  position: absolute;
-  display: grid;
-  width: min(76vw, 1120px);
-  will-change: transform, opacity, filter;
-}
-
-.sounding > p {
-  max-width: 18ch;
-  margin: 0;
-  font-size: clamp(2.75rem, 7.1vw, 7.6rem);
-  font-weight: 450;
-  line-height: 0.91;
-  letter-spacing: -0.058em;
-  text-wrap: balance;
-}
-
-.sounding > span {
-  display: block;
-  max-width: 38ch;
-  margin-top: 28px;
-  font-size: clamp(0.92rem, 1.25vw, 1.12rem);
-  line-height: 1.45;
-  text-wrap: pretty;
-}
-
-.soundingNorth {
-  top: 24%;
-  left: 7vw;
-}
-
-.soundingWest {
-  bottom: 12%;
-  left: 13vw;
-}
-
-.soundingEast {
-  top: 26%;
-  right: 6vw;
-  justify-items: end;
-  text-align: right;
-}
-
-.depthClosing {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 80px var(--page-gutter) 34px;
-}
-
-.depthClosing > p {
-  max-width: 13ch;
-  margin: 0 0 auto;
-  font-family: var(--font-serif);
-  font-size: clamp(3.4rem, 9.2vw, 10rem);
-  font-weight: 400;
-  line-height: 0.9;
-  letter-spacing: -0.06em;
-}
-
-.depthClosing > div,
-.waterLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.depthClosing a,
-.waterLinks a {
-  padding-bottom: 4px;
-  border-bottom: 1px solid rgba(246, 247, 244, 0.5);
-  font-size: 0.78rem;
-}
-
-.openWaterPage {
-  height: 100vh;
-  min-height: 100dvh;
-  overflow: hidden;
-}
-
-.openWater {
-  position: relative;
   height: 100%;
-  min-height: 100dvh;
-  overflow: hidden;
-  isolation: isolate;
-  cursor: grab;
+}
+
+.fieldPoster {
+  z-index: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.32;
+  filter: grayscale(1) contrast(1.12) brightness(0.42);
+}
+
+.fieldFallbackVideo {
+  z-index: 0;
+  max-width: none;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.15) brightness(0.5);
+}
+
+.tidalCanvas {
+  z-index: 1;
+  display: block;
   touch-action: pan-y;
 }
 
-.openWater:active {
-  cursor: grabbing;
-}
-
-.currentFilm {
-  z-index: -5;
-  max-width: none;
-  filter: grayscale(1) contrast(1.2) brightness(0.62);
-  transform: scale(1.06);
-}
-
-.currentGrade {
-  z-index: -4;
+.fieldVignette {
+  z-index: 2;
+  pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(1, 6, 9, 0.62), transparent 54%, rgba(1, 6, 9, 0.18)),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.18), transparent 35%, rgba(0, 0, 0, 0.56));
+    linear-gradient(to bottom, rgba(2, 8, 12, 0.42), transparent 20%, transparent 72%, rgba(2, 8, 12, 0.72)),
+    radial-gradient(circle at 50% 47%, transparent 38%, rgba(1, 6, 9, 0.44) 110%);
 }
 
-.refractionField {
-  z-index: -3;
-  backdrop-filter: contrast(1.1) saturate(1.25) brightness(1.04);
-  -webkit-backdrop-filter: contrast(1.1) saturate(1.25) brightness(1.04);
+.fieldGrain {
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.84' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
 }
 
-.currentThought {
+.fieldNote {
   position: absolute;
-  top: 50%;
-  left: clamp(22px, 7vw, 110px);
-  width: min(82vw, 1160px);
-  will-change: transform, opacity, filter;
+  z-index: 10;
+  width: min(34rem, calc(100vw - var(--page-gutter) * 2));
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
-.currentThought > p {
-  max-width: 18ch;
+.fieldNote h2 {
+  margin: 0 0 9px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: 0.065em;
+  color: var(--field-bone);
+}
+
+.fieldNote p {
+  max-width: 39ch;
   margin: 0;
-  font-size: clamp(3rem, 8vw, 8.6rem);
-  font-weight: 450;
-  line-height: 0.89;
-  letter-spacing: -0.064em;
-  text-wrap: balance;
-}
-
-.currentThought > span {
-  display: block;
-  max-width: 42ch;
-  margin-top: 30px;
-  font-size: clamp(0.95rem, 1.35vw, 1.18rem);
-  line-height: 1.45;
+  font-size: clamp(0.92rem, 1.15vw, 1.08rem);
+  font-weight: 400;
+  line-height: 1.38;
+  letter-spacing: -0.016em;
+  color: var(--field-muted);
   text-wrap: pretty;
 }
 
-.waterLinks {
-  margin-top: 32px;
+.fieldNote > span,
+.staticMoment > span {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.66rem;
+  line-height: 1.2;
+  letter-spacing: 0.055em;
+  color: rgba(228, 231, 226, 0.42);
 }
 
-.currentNav {
-  position: absolute;
-  bottom: 25px;
-  left: var(--page-gutter);
-  z-index: 5;
-  display: flex;
-  gap: clamp(14px, 2.2vw, 30px);
-}
-
-.currentNav button,
-.nextCurrent {
-  padding: 7px 0;
-  border: 0;
-  background: transparent;
-  color: rgba(246, 247, 244, 0.5);
-  font-size: 0.7rem;
-  cursor: pointer;
-}
-
-.currentNav button {
-  box-shadow: inset 0 -1px transparent;
-  transition: color 300ms ease, box-shadow 300ms ease;
-}
-
-.currentNav button:hover,
-.currentNav button:focus-visible,
-.currentNav button[aria-current="step"] {
-  color: var(--ocean-white);
-}
-
-.currentNav button[aria-current="step"] {
-  box-shadow: inset 0 -1px var(--ocean-blue);
-}
-
-.nextCurrent {
-  position: absolute;
+.fieldNoteLow {
   right: var(--page-gutter);
-  bottom: 25px;
+  bottom: 28px;
+  text-align: right;
+}
+
+.fieldNoteLow p {
+  margin-left: auto;
+}
+
+.fieldNoteHigh {
+  top: 82px;
+  left: var(--page-gutter);
+}
+
+.fieldNoteContact {
+  right: var(--page-gutter);
+  bottom: 28px;
+  text-align: right;
+  pointer-events: auto;
+}
+
+.fieldNoteContact p {
+  margin-left: auto;
+}
+
+.fieldLinks {
   display: flex;
-  gap: 10px;
-  color: var(--ocean-white);
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.fieldLinks a {
+  position: relative;
+  padding: 6px 0;
+  font-size: 0.72rem;
+  line-height: 1;
+  color: var(--field-bone);
+}
+
+.fieldLinks a::after {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  height: 1px;
+  background: var(--field-blue);
+  transform: scaleX(0.18);
+  transform-origin: left;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  content: "";
+}
+
+.fieldLinks a:hover::after,
+.fieldLinks a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.staticTidalPage {
+  min-height: 100dvh;
+  isolation: isolate;
+}
+
+.staticOcean {
+  position: fixed;
+  z-index: -3;
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(1) contrast(1.14) brightness(0.4);
+}
+
+.staticGrade {
+  position: fixed;
+  z-index: -2;
+  background: rgba(3, 9, 13, 0.58);
+}
+
+.staticTidalPage > .fieldGrain {
+  position: fixed;
+  z-index: -1;
+}
+
+.staticMoments {
+  position: relative;
+  z-index: 5;
+}
+
+.staticMoment {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px var(--page-gutter) 32px;
+}
+
+.staticMoment h2 {
+  max-width: 12ch;
+  font-size: clamp(3.2rem, 11vw, 10rem);
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -0.065em;
+  text-transform: uppercase;
+}
+
+.staticMoment p {
+  max-width: 36ch;
+  margin-top: 24px;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.4;
+  color: var(--field-muted);
+}
+
+.staticMoment .fieldLinks {
+  justify-content: flex-start;
 }
 
 @media (max-width: 760px) {
   .conceptNav {
-    top: 13px;
-    align-items: flex-start;
-    font-size: 0.62rem;
+    top: 10px;
+    font-size: 0.61rem;
   }
 
-  .conceptLinks {
-    display: grid;
-    gap: 2px;
-    justify-items: end;
+  .fieldJourney {
+    height: 560svh;
   }
 
-  .depthOpening h1 {
-    font-size: clamp(4rem, 22vw, 7rem);
-    line-height: 0.83;
-    white-space: normal;
-  }
-
-  .sounding {
-    right: auto;
+  .fieldNote {
+    right: var(--page-gutter);
     left: var(--page-gutter);
-    width: calc(100vw - var(--page-gutter) * 2);
-    justify-items: start;
+    width: auto;
     text-align: left;
   }
 
-  .sounding > p {
-    font-size: clamp(2.6rem, 13vw, 4.9rem);
+  .fieldNoteHigh {
+    top: 66px;
   }
 
-  .soundingNorth,
-  .soundingEast {
-    top: 24%;
+  .fieldNoteLow,
+  .fieldNoteContact {
+    bottom: 20px;
   }
 
-  .soundingWest {
-    top: 31%;
-    bottom: auto;
+  .fieldNoteLow p,
+  .fieldNoteContact p {
+    margin-left: 0;
   }
 
-  .sounding > span {
-    margin-top: 22px;
+  .fieldNote p {
+    max-width: 31ch;
+    font-size: 0.9rem;
   }
 
-  .depthClosing > p {
-    margin-top: 16vh;
-    font-size: clamp(3.3rem, 16vw, 5.8rem);
+  .fieldLinks {
+    justify-content: flex-start;
   }
 
-  .currentThought {
-    top: 45%;
-    left: var(--page-gutter);
-    width: calc(100vw - var(--page-gutter) * 2);
+  .fieldPoster {
+    opacity: 0.4;
+    background-position: 57% center;
   }
 
-  .currentThought > p {
-    font-size: clamp(3rem, 14.5vw, 5.6rem);
-    line-height: 0.91;
-  }
-
-  .currentThought > span {
-    max-width: 32ch;
-    margin-top: 22px;
-  }
-
-  .currentNav {
-    right: var(--page-gutter);
-    bottom: 56px;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  .nextCurrent {
-    bottom: 15px;
+  .staticMoment h2 {
+    font-size: clamp(3rem, 17vw, 5.8rem);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .oceanFilm,
-  .currentFilm {
-    transform: none;
-  }
-
-  .conceptNav a,
-  .currentNav button {
+  .conceptNav a::after,
+  .fieldLinks a::after {
     transition: none;
   }
 }
