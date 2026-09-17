@@ -5,9 +5,9 @@ const BASE = import.meta.env.BASE_URL;
 
 function ConceptNav() {
   return (
-    <nav className={styles.conceptNav} aria-label="Tidal Field preview">
+    <nav className={styles.conceptNav} aria-label="Horizon preview">
       <a className={styles.homeLink} href={BASE}>Current site</a>
-      <span>Tidal Field</span>
+      <span>Horizon</span>
     </nav>
   );
 }
