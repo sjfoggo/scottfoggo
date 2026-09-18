@@ -73,10 +73,10 @@ function HorizonMoment({ moment, progress }) {
   );
 }
 
-function StaticHorizon() {
+function StaticHorizon({ preview }) {
   return (
     <main className={`${styles.horizonPage} ${styles.staticHorizonPage}`}>
-      <ConceptNav />
+      {preview && <ConceptNav />}
       <div
         className={styles.staticOcean}
         style={{ backgroundImage: `url(${OCEAN_POSTER})` }}
@@ -98,7 +98,7 @@ function StaticHorizon() {
   );
 }
 
-function AnimatedHorizon() {
+function AnimatedHorizon({ preview }) {
   const sceneRef = useRef(null);
   const videoRef = useRef(null);
   const [rendererState, setRendererState] = useState("loading");
@@ -109,7 +109,7 @@ function AnimatedHorizon() {
 
   return (
     <main className={styles.horizonPage}>
-      <ConceptNav />
+      {preview && <ConceptNav />}
       <section
         className={styles.horizonJourney}
         ref={sceneRef}
@@ -155,10 +155,12 @@ function AnimatedHorizon() {
   );
 }
 
-function TideSignalConcept() {
+function TideSignalConcept({ preview = false }) {
   const reducedMotion = useReducedMotion();
 
-  return reducedMotion ? <StaticHorizon /> : <AnimatedHorizon />;
+  return reducedMotion
+    ? <StaticHorizon preview={preview} />
+    : <AnimatedHorizon preview={preview} />;
 }
 
 export default TideSignalConcept;

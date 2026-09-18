@@ -1,18 +1,23 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
-import { expect, test } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { expect, test, vi } from 'vitest';
+
+vi.mock('motion/react', async (importOriginal) => {
+  const motion = await importOriginal();
+
+  return {
+    ...motion,
+    useReducedMotion: () => true,
+  };
+});
+
 import App from '../components/App';
 
-test('renders the site navigation', () => {
+test('renders the ocean experience as the main site', () => {
   render(<App />);
 
   expect(screen.getByRole('heading', { name: /scott foggo/i })).toBeInTheDocument();
-  const menuButton = screen.getByRole('button', { name: /open site index/i });
-  expect(menuButton).toHaveAttribute('aria-expanded', 'false');
-  fireEvent.click(menuButton);
-  expect(screen.getByRole('button', { name: /close site index/i })).toHaveAttribute('aria-expanded', 'true');
-  expect(screen.getByRole('link', { name: /about/i })).toHaveAttribute('href', '#about');
-  expect(screen.getByRole('link', { name: /experience/i })).toHaveAttribute('href', '#career');
-  expect(screen.queryByRole('link', { name: /technology/i })).not.toBeInTheDocument();
-  expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute('href', '#contact');
+  expect(screen.getByRole('heading', { name: /turns data into decisions/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /let’s build something useful/i })).toBeInTheDocument();
+  expect(screen.queryByRole('navigation', { name: /horizon preview/i })).not.toBeInTheDocument();
 });
