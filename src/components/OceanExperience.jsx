@@ -1,5 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "motion/react";
 import OceanRenderer from "./OceanRenderer";
 import styles from "../css/OceanExperience.module.css";
 
@@ -46,6 +51,28 @@ const CONTACT_LINKS = [
   },
 ];
 
+const HERO_NAME_FADE_OUT_START = 0.04;
+const HERO_NAME_FADE_OUT_END = 0.09;
+
+export function getHeroNameScrollStyle(progress) {
+  if (progress <= HERO_NAME_FADE_OUT_START) {
+    return { opacity: 1, visibility: "visible" };
+  }
+
+  if (progress >= HERO_NAME_FADE_OUT_END) {
+    return { opacity: 0, visibility: "hidden" };
+  }
+
+  const fadeProgress =
+    (progress - HERO_NAME_FADE_OUT_START) /
+    (HERO_NAME_FADE_OUT_END - HERO_NAME_FADE_OUT_START);
+
+  return {
+    opacity: 1 - fadeProgress,
+    visibility: "visible",
+  };
+}
+
 function ContactLinks() {
   return (
     <nav className={styles.contactLinks} aria-label="Contact">
@@ -90,22 +117,29 @@ function AnimatedStatement({ progress, statement }) {
 function OceanExperience() {
   const journeyRef = useRef(null);
   const videoRef = useRef(null);
+  const heroNameLayerRef = useRef(null);
   const [nameVisible, setNameVisible] = useState(false);
   const [rendererStatus, setRendererStatus] = useState("loading");
   const { scrollYProgress } = useScroll({
     target: journeyRef,
     offset: ["start start", "end end"],
   });
-  const heroNameOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.075, 0.155],
-    [1, 1, 0],
-  );
+
+  const syncHeroNameWithScroll = useCallback((progress) => {
+    if (!heroNameLayerRef.current) return;
+
+    const { opacity, visibility } = getHeroNameScrollStyle(progress);
+    heroNameLayerRef.current.style.opacity = String(opacity);
+    heroNameLayerRef.current.style.visibility = visibility;
+  }, []);
+
+  useMotionValueEvent(scrollYProgress, "change", syncHeroNameWithScroll);
 
   useEffect(() => {
+    syncHeroNameWithScroll(scrollYProgress.get());
     const revealTimer = window.setTimeout(() => setNameVisible(true), 2000);
     return () => window.clearTimeout(revealTimer);
-  }, []);
+  }, [scrollYProgress, syncHeroNameWithScroll]);
 
   return (
     <main className={styles.page}>
@@ -140,9 +174,9 @@ function OceanExperience() {
             onStatusChange={setRendererStatus}
           />
 
-          <motion.div
+          <div
             className={styles.heroNameLayer}
-            style={{ opacity: heroNameOpacity }}
+            ref={heroNameLayerRef}
           >
             <h1
               className={`${styles.heroName} ${
@@ -151,7 +185,7 @@ function OceanExperience() {
             >
               Scott Foggo
             </h1>
-          </motion.div>
+          </div>
           {STATEMENTS.map((statement) => (
             <AnimatedStatement
               statement={statement}

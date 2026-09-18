@@ -70,7 +70,10 @@
   position: absolute;
   inset: 0;
   z-index: 3;
+  opacity: 1;
   pointer-events: none;
+  visibility: visible;
+  will-change: opacity;
 }
 
 .heroName {

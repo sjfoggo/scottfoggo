@@ -6,7 +6,26 @@ vi.mock("../components/OceanRenderer", () => ({
   default: () => null,
 }));
 
-import OceanExperience from "../components/OceanExperience";
+import OceanExperience, {
+  getHeroNameScrollStyle,
+} from "../components/OceanExperience";
+
+test("fully hides the hero name before narrative statements begin", () => {
+  expect(getHeroNameScrollStyle(0)).toEqual({
+    opacity: 1,
+    visibility: "visible",
+  });
+  const midpoint = getHeroNameScrollStyle(0.065);
+  expect(midpoint.opacity).toBeCloseTo(0.5);
+  expect(midpoint.visibility).toBe("visible");
+
+  [0.09, 0.12, 0.38, 0.62, 0.84, 1].forEach((progress) => {
+    expect(getHeroNameScrollStyle(progress)).toEqual({
+      opacity: 0,
+      visibility: "hidden",
+    });
+  });
+});
 
 test("renders the ocean narrative and contact links", () => {
   vi.useFakeTimers();
