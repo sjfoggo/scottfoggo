@@ -100,12 +100,14 @@ const FILM_SHADER = `
     return clamp(uv, 0.002, 0.998);
   }
 
-  float chapterFocus(float progress) {
-    float semantic = smoothstep(0.38, 0.45, progress)
-      * (1.0 - smoothstep(0.56, 0.635, progress));
-    float metric = smoothstep(0.61, 0.69, progress)
-      * (1.0 - smoothstep(0.80, 0.87, progress));
-    return max(semantic, metric);
+  float statementFocus(float progress) {
+    float decisions = smoothstep(0.13, 0.20, progress)
+      * (1.0 - smoothstep(0.35, 0.42, progress));
+    float action = smoothstep(0.38, 0.46, progress)
+      * (1.0 - smoothstep(0.59, 0.66, progress));
+    float together = smoothstep(0.62, 0.70, progress)
+      * (1.0 - smoothstep(0.82, 0.88, progress));
+    return max(decisions, max(action, together));
   }
 
   void main() {
@@ -117,7 +119,7 @@ const FILM_SHADER = `
     float above = luminance(texture2D(uVideo, uv + vec2(0.0, texel.y)).rgb);
     vec2 flow = vec2(right - left, above - below);
 
-    float focus = chapterFocus(uProgress);
+    float focus = statementFocus(uProgress);
     uv += flow * 0.0055 * focus;
 
     vec2 pointerUv = uPointer * 0.5 + 0.5;
