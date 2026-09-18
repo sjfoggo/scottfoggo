@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import OceanRenderer from "./OceanRenderer";
 import styles from "../css/OceanExperience.module.css";
@@ -90,6 +90,7 @@ function AnimatedStatement({ progress, statement }) {
 function OceanExperience() {
   const journeyRef = useRef(null);
   const videoRef = useRef(null);
+  const [nameVisible, setNameVisible] = useState(false);
   const [rendererStatus, setRendererStatus] = useState("loading");
   const { scrollYProgress } = useScroll({
     target: journeyRef,
@@ -100,6 +101,11 @@ function OceanExperience() {
     [0, 0.075, 0.155],
     [1, 1, 0],
   );
+
+  useEffect(() => {
+    const revealTimer = window.setTimeout(() => setNameVisible(true), 2000);
+    return () => window.clearTimeout(revealTimer);
+  }, []);
 
   return (
     <main className={styles.page}>
@@ -138,7 +144,13 @@ function OceanExperience() {
             className={styles.heroNameLayer}
             style={{ opacity: heroNameOpacity }}
           >
-            <h1 className={styles.heroName}>Scott Foggo</h1>
+            <h1
+              className={`${styles.heroName} ${
+                nameVisible ? styles.heroNameVisible : ""
+              }`}
+            >
+              Scott Foggo
+            </h1>
           </motion.div>
           {STATEMENTS.map((statement) => (
             <AnimatedStatement

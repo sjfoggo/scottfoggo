@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import { expect, test, vi } from "vitest";
 
 vi.mock("../components/OceanRenderer", () => ({
@@ -9,11 +9,18 @@ vi.mock("../components/OceanRenderer", () => ({
 import OceanExperience from "../components/OceanExperience";
 
 test("renders the ocean narrative and contact links", () => {
+  vi.useFakeTimers();
   render(<OceanExperience />);
 
-  expect(
-    screen.getByRole("heading", { name: "Scott Foggo" }),
-  ).toBeInTheDocument();
+  const name = screen.getByRole("heading", { name: "Scott Foggo" });
+  expect(name).toBeInTheDocument();
+  expect(name.className).not.toContain("heroNameVisible");
+
+  act(() => vi.advanceTimersByTime(1999));
+  expect(name.className).not.toContain("heroNameVisible");
+
+  act(() => vi.advanceTimersByTime(1));
+  expect(name.className).toContain("heroNameVisible");
   expect(
     screen.getByRole("heading", {
       name: "I build software that turns data into decisions.",
@@ -45,4 +52,5 @@ test("renders the ocean narrative and contact links", () => {
     "href",
     "https://www.linkedin.com/in/scott-foggo/",
   );
+  vi.useRealTimers();
 });

@@ -88,13 +88,11 @@
   text-transform: uppercase;
   opacity: 0;
   transform: translate(-50%, -50%);
-  animation: reveal-name 8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: opacity 12s linear;
 }
 
-@keyframes reveal-name {
-  to {
-    opacity: 1;
-  }
+.heroNameVisible {
+  opacity: 1;
 }
 
 .statement {
