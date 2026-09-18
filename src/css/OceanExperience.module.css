@@ -182,9 +182,9 @@
   }
 
   .fallbackName {
-    top: 51%;
-    width: 78vw;
-    font-size: 17.5vw;
+    top: 52%;
+    width: 84vw;
+    font-size: 21vw;
     white-space: normal;
   }
 
@@ -196,7 +196,7 @@
   }
 
   .statement h2 {
-    font-size: clamp(2.8rem, 14vw, 5.4rem);
+    font-size: clamp(2.4rem, 12vw, 4.6rem);
   }
 
   .decisionStatement,

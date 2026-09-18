@@ -24,13 +24,13 @@ export function getNameLayout(width, height) {
   const mobile = width < MOBILE_BREAKPOINT;
 
   return {
-    centerY: height * (mobile ? 0.51 : 0.54),
+    centerY: height * (mobile ? 0.52 : 0.54),
     fontSize: Math.min(
-      width * (mobile ? 0.2 : 0.145),
-      height * (mobile ? 0.15 : 0.205),
+      width * (mobile ? 0.24 : 0.145),
+      height * (mobile ? 0.18 : 0.205),
     ),
     lines: mobile ? ["SCOTT", "FOGGO"] : ["SCOTT FOGGO"],
-    maxWidth: width * (mobile ? 0.78 : 0.9),
+    maxWidth: width * (mobile ? 0.84 : 0.9),
   };
 }
 
