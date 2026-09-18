@@ -10,26 +10,32 @@
 
 :root {
   --font-sans: "PP Mori", Arial, Helvetica, sans-serif;
-  --font-serif: Georgia, "Times New Roman", serif;
-
+  --page-gutter: clamp(20px, 3vw, 48px);
+  color: #e5e6e2;
+  background: #05080a;
   font-family: var(--font-sans);
-  color: #11110f;
-  background: #eeece6;
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
-  scroll-behavior: smooth;
+  min-width: 320px;
+  background: #05080a;
 }
 
 body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  background: #eeece6;
+  background: #05080a;
 }
 
 button,
@@ -37,11 +43,12 @@ a {
   font: inherit;
 }
 
-button {
+a {
   color: inherit;
+  text-decoration: none;
 }
 
 ::selection {
-  color: #eeece6;
-  background: #315cff;
+  color: #05080a;
+  background: #e5e6e2;
 }

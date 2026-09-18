@@ -1,0 +1,17 @@
+import { expect, test } from "vitest";
+import { getNameLayout } from "../components/OceanRenderer";
+
+test("uses a compact, two-line name treatment on mobile", () => {
+  const layout = getNameLayout(390, 844);
+
+  expect(layout.lines).toEqual(["SCOTT", "FOGGO"]);
+  expect(layout.fontSize).toBe(78);
+  expect(layout.maxWidth).toBe(304.2);
+});
+
+test("uses a single-line name treatment on larger screens", () => {
+  const layout = getNameLayout(1440, 900);
+
+  expect(layout.lines).toEqual(["SCOTT FOGGO"]);
+  expect(layout.fontSize).toBe(184.5);
+});
