@@ -32,54 +32,16 @@ export const VERTEX_SHADER = `
   }
 `;
 
-export const ACCUMULATION_FRAGMENT_SHADER = `
-  precision mediump float;
-
-  varying vec2 vUv;
-  uniform sampler2D uPrevious;
-  uniform sampler2D uVideo;
-  uniform sampler2D uMask;
-  uniform vec2 uResolution;
-  uniform vec2 uVideoSize;
-  uniform float uProgress;
-  uniform float uFrameScale;
-
-  ${SHARED_FRAGMENT_GLSL}
-
-  void main() {
-    vec2 uv = coverUv(vUv, uResolution, uVideoSize, uProgress);
-    vec2 texel = 1.5 / uVideoSize;
-    float center = luminance(texture2D(uVideo, uv).rgb);
-    float horizontal = (
-      luminance(texture2D(uVideo, uv + vec2(texel.x, 0.0)).rgb) +
-      luminance(texture2D(uVideo, uv - vec2(texel.x, 0.0)).rgb)
-    ) * 0.5;
-    float vertical = (
-      luminance(texture2D(uVideo, uv + vec2(0.0, texel.y)).rgb) +
-      luminance(texture2D(uVideo, uv - vec2(0.0, texel.y)).rgb)
-    ) * 0.5;
-    float crest = smoothstep(0.01, 0.12, max(0.0, center - (horizontal + vertical) * 0.5));
-    float mask = texture2D(uMask, vUv).r;
-    float previous = texture2D(uPrevious, vUv).r;
-    float deposit = (0.0035 + crest * 0.045) * uFrameScale;
-    float exposure = min(1.0, previous + (1.0 - previous) * deposit);
-    gl_FragColor = vec4(vec3(exposure * mask), 1.0);
-  }
-`;
-
 export const FILM_FRAGMENT_SHADER = `
   precision mediump float;
 
   varying vec2 vUv;
   uniform sampler2D uVideo;
-  uniform sampler2D uExposure;
-  uniform sampler2D uMask;
   uniform vec2 uResolution;
   uniform vec2 uVideoSize;
   uniform vec2 uPointer;
   uniform float uPointerActive;
   uniform float uProgress;
-  uniform float uHeroTime;
 
   ${SHARED_FRAGMENT_GLSL}
 
@@ -106,25 +68,16 @@ export const FILM_FRAGMENT_SHADER = `
 
     vec2 pointerUv = uPointer * 0.5 + 0.5;
     vec2 fromPointer = vUv - pointerUv;
-    float pointerFalloff = exp(-dot(fromPointer, fromPointer) * 18.0) * uPointerActive;
+    float pointerFalloff = exp(-dot(fromPointer, fromPointer) * 18.0)
+      * uPointerActive;
     uv += normalize(fromPointer + vec2(0.0001)) * pointerFalloff * 0.0018;
     uv = clamp(uv, 0.002, 0.998);
 
-    vec3 source = texture2D(uVideo, uv).rgb;
-    float gray = luminance(source);
+    float gray = luminance(texture2D(uVideo, uv).rgb);
     gray = pow(smoothstep(0.055, 0.91, gray), 1.08);
     vec3 color = vec3(gray * 0.68);
 
-    float developedName = texture2D(uExposure, vUv).r;
-    float nameMask = texture2D(uMask, vUv).r;
-    float settled = smoothstep(18.0, 25.0, uHeroTime);
-    float nameReveal = mix(developedName, nameMask, settled);
-    float heroPresence = 1.0 - smoothstep(0.075, 0.155, uProgress);
-    vec3 texturedType = min(vec3(0.92), color * 0.48 + vec3(0.62));
-    vec3 exposedType = mix(texturedType, vec3(0.92), settled);
-    color = mix(color, exposedType, nameReveal * heroPresence);
-
-    float vignette = smoothstep(0.82, 0.24, distance(vUv, vec2(0.5, 0.5)));
+    float vignette = smoothstep(0.82, 0.24, distance(vUv, vec2(0.5)));
     color *= mix(0.63, 1.0, vignette);
     color *= mix(0.93, 0.82, uProgress);
     gl_FragColor = vec4(color, 1.0);

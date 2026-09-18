@@ -95,6 +95,11 @@ function OceanExperience() {
     target: journeyRef,
     offset: ["start start", "end end"],
   });
+  const heroNameOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.075, 0.155],
+    [1, 1, 0],
+  );
 
   return (
     <main className={styles.page}>
@@ -129,7 +134,12 @@ function OceanExperience() {
             onStatusChange={setRendererStatus}
           />
 
-          <h1 className={styles.fallbackName}>Scott Foggo</h1>
+          <motion.div
+            className={styles.heroNameLayer}
+            style={{ opacity: heroNameOpacity }}
+          >
+            <h1 className={styles.heroName}>Scott Foggo</h1>
+          </motion.div>
           {STATEMENTS.map((statement) => (
             <AnimatedStatement
               statement={statement}

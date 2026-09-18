@@ -66,11 +66,17 @@
   opacity: 1;
 }
 
-.fallbackName {
+.heroNameLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.heroName {
   position: absolute;
   top: 54%;
   left: 50%;
-  z-index: 3;
   width: 90vw;
   margin: 0;
   color: #e5e6e2;
@@ -82,11 +88,13 @@
   text-transform: uppercase;
   opacity: 0;
   transform: translate(-50%, -50%);
-  pointer-events: none;
+  animation: reveal-name 8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.viewport[data-renderer="failed"] .fallbackName {
-  opacity: 1;
+@keyframes reveal-name {
+  to {
+    opacity: 1;
+  }
 }
 
 .statement {
@@ -181,7 +189,7 @@
     height: 510svh;
   }
 
-  .fallbackName {
+  .heroName {
     top: 52%;
     width: 84vw;
     font-size: 21vw;

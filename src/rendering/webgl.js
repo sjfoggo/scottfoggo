@@ -42,48 +42,8 @@ export function createTexture(gl) {
   return texture;
 }
 
-export function createRenderTarget(gl, width, height) {
-  const texture = createTexture(gl);
-  gl.texImage2D(
-    gl.TEXTURE_2D,
-    0,
-    gl.RGBA,
-    width,
-    height,
-    0,
-    gl.RGBA,
-    gl.UNSIGNED_BYTE,
-    null,
-  );
-
-  const framebuffer = gl.createFramebuffer();
-  gl.bindFramebuffer(gl.FRAMEBUFFER, framebuffer);
-  gl.framebufferTexture2D(
-    gl.FRAMEBUFFER,
-    gl.COLOR_ATTACHMENT0,
-    gl.TEXTURE_2D,
-    texture,
-    0,
-  );
-
-  if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE) {
-    gl.deleteFramebuffer(framebuffer);
-    gl.deleteTexture(texture);
-    throw new Error("Unable to create the ocean exposure buffer.");
-  }
-
-  return { framebuffer, texture };
-}
-
 export function bindTexture(gl, texture, unit, location) {
   gl.activeTexture(gl.TEXTURE0 + unit);
   gl.bindTexture(gl.TEXTURE_2D, texture);
   gl.uniform1i(location, unit);
-}
-
-export function deleteRenderTargets(gl, targets) {
-  targets.forEach(({ framebuffer, texture }) => {
-    gl.deleteFramebuffer(framebuffer);
-    gl.deleteTexture(texture);
-  });
 }
