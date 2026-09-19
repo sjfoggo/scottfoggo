@@ -19,19 +19,19 @@ const OCEAN_MEDIA = {
 const STATEMENTS = [
   {
     id: "decisions",
-    range: [0.12, 0.2, 0.35, 0.42],
+    range: [0.12, 0.2, 0.33, 0.38],
     position: styles.decisionStatement,
     text: "I build software that turns data into decisions.",
   },
   {
     id: "action",
-    range: [0.38, 0.46, 0.59, 0.66],
+    range: [0.38, 0.46, 0.57, 0.62],
     position: styles.actionStatement,
     text: "I value simplicity, bias for action, and moving fast.",
   },
   {
     id: "together",
-    range: [0.62, 0.7, 0.82, 0.88],
+    range: [0.62, 0.7, 0.8, 0.84],
     position: styles.togetherStatement,
     text: "I believe we’re better when working together.",
   },
