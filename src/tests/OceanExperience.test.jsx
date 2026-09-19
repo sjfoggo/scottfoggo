@@ -29,7 +29,13 @@ test("fully hides the hero name before narrative statements begin", () => {
 
 test("renders the ocean narrative and contact links", () => {
   vi.useFakeTimers();
-  render(<OceanExperience />);
+  const { container } = render(<OceanExperience />);
+
+  expect(
+    Array.from(container.querySelectorAll("[data-snap-chapter]")).map(
+      (chapter) => chapter.dataset.snapChapter,
+    ),
+  ).toEqual(["intro", "decisions", "action", "together", "contact"]);
 
   const name = screen.getByRole("heading", { name: "Scott Foggo" });
   expect(name).toBeInTheDocument();

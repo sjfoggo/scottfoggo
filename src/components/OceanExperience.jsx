@@ -51,6 +51,8 @@ const CONTACT_LINKS = [
   },
 ];
 
+const SNAP_CHAPTERS = ["intro", ...STATEMENTS.map(({ id }) => id)];
+
 const HERO_NAME_FADE_OUT_START = 0.04;
 const HERO_NAME_FADE_OUT_END = 0.09;
 
@@ -191,6 +193,15 @@ function OceanExperience() {
               statement={statement}
               progress={scrollYProgress}
               key={statement.id}
+            />
+          ))}
+        </div>
+        <div className={styles.chapterRail} aria-hidden="true">
+          {SNAP_CHAPTERS.map((chapter) => (
+            <div
+              className={styles.snapChapter}
+              data-snap-chapter={chapter}
+              key={chapter}
             />
           ))}
         </div>

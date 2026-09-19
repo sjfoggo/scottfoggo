@@ -29,6 +29,7 @@
 html {
   min-width: 320px;
   background: #05080a;
+  scroll-snap-type: y mandatory;
 }
 
 body {
