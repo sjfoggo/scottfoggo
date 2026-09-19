@@ -3,6 +3,7 @@ import {
   motion,
   useMotionValueEvent,
   useScroll,
+  useSpring,
   useTransform,
 } from "motion/react";
 import OceanRenderer from "./OceanRenderer";
@@ -55,6 +56,11 @@ const SNAP_CHAPTERS = ["intro", ...STATEMENTS.map(({ id }) => id)];
 
 const HERO_NAME_FADE_OUT_START = 0.04;
 const HERO_NAME_FADE_OUT_END = 0.09;
+const STATEMENT_SPRING = {
+  stiffness: 70,
+  damping: 20,
+  mass: 0.8,
+};
 
 export function getHeroNameScrollStyle(progress) {
   if (progress <= HERO_NAME_FADE_OUT_START) {
@@ -94,16 +100,18 @@ function ContactLinks() {
 
 function AnimatedStatement({ progress, statement }) {
   const isContact = statement.id === "contact";
-  const opacity = useTransform(
+  const targetOpacity = useTransform(
     progress,
     statement.range,
     isContact ? [0, 1, 1, 1] : [0, 1, 1, 0],
   );
-  const y = useTransform(
+  const targetY = useTransform(
     progress,
     statement.range,
     isContact ? [14, 0, 0, 0] : [14, 0, 0, -12],
   );
+  const opacity = useSpring(targetOpacity, STATEMENT_SPRING);
+  const y = useSpring(targetY, STATEMENT_SPRING);
 
   return (
     <motion.article
