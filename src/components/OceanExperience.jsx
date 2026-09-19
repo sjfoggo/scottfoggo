@@ -56,7 +56,12 @@ const SNAP_CHAPTERS = ["intro", ...STATEMENTS.map(({ id }) => id)];
 
 const HERO_NAME_FADE_OUT_START = 0.04;
 const HERO_NAME_FADE_OUT_END = 0.09;
-const STATEMENT_SPRING = {
+const STATEMENT_OPACITY_SPRING = {
+  stiffness: 170,
+  damping: 26,
+  mass: 0.55,
+};
+const STATEMENT_POSITION_SPRING = {
   stiffness: 70,
   damping: 20,
   mass: 0.8,
@@ -110,8 +115,8 @@ function AnimatedStatement({ progress, statement }) {
     statement.range,
     isContact ? [14, 0, 0, 0] : [14, 0, 0, -12],
   );
-  const opacity = useSpring(targetOpacity, STATEMENT_SPRING);
-  const y = useSpring(targetY, STATEMENT_SPRING);
+  const opacity = useSpring(targetOpacity, STATEMENT_OPACITY_SPRING);
+  const y = useSpring(targetY, STATEMENT_POSITION_SPRING);
 
   return (
     <motion.article
