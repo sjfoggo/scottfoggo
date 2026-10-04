@@ -42,7 +42,7 @@ export default function CanadaMap() {
           visibilityRatio: 0.7,
           constrainDuringPan: true,
           minZoomImageRatio: 1,
-          maxZoomPixelRatio: 1.5,
+          maxZoomPixelRatio: 1.6,
           imageLoaderLimit: 6,
           maxImageCacheCount: 80,
           gestureSettingsMouse: { clickToZoom: false, dblClickToZoom: true, scrollToZoom: true },
