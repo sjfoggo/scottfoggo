@@ -158,6 +158,9 @@ function OceanExperience() {
 
   return (
     <main className={styles.page}>
+      <nav className={styles.workLink} aria-label="Selected work">
+        <a href={`${import.meta.env.BASE_URL}projects/canadian-fire-perimeter-atlas/`}>Canadian Fire Perimeter Atlas ↗</a>
+      </nav>
       <section
         className={styles.journey}
         ref={journeyRef}

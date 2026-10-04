@@ -1,0 +1,67 @@
+:global(html[data-page="atlas-project"]) { scroll-snap-type: none; scroll-padding-top: 24px; }
+.page { --muted: #a5abae; --line: #353a3d; max-width: 1440px; margin: auto; padding: 0 var(--page-gutter); }
+.page a:focus-visible, .page summary:focus-visible { outline: 2px solid #e5e6e2; outline-offset: 6px; }
+.page a:hover { color: #fff; }
+.page h1, .page h2, .page h3, .page p { margin-top: 0; }
+.page h2 { font-size: clamp(2rem, 3.5vw, 3.4rem); font-weight: 450; line-height: 1.07; letter-spacing: -0.045em; text-wrap: balance; }
+.page h3 { font-size: 1.4rem; line-height: 1.2; font-weight: 500; letter-spacing: -0.025em; }
+.page p { line-height: 1.6; }
+.skip { position: absolute; top: -100px; background: #e5e6e2; color: #05080a; padding: 14px; }
+.skip:focus { top: 12px; z-index: 1; }
+.header { min-height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--line); }
+.name { font-size: 1.05rem; font-weight: 550; letter-spacing: -0.025em; }
+.header nav { display: flex; gap: 28px; font-size: 0.8rem; }
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(32px, 5vw, 80px); align-items: center; padding: 48px 0 64px; }
+.hero h1 { font-size: clamp(2.8rem, 4.35vw, 4.5rem); font-weight: 450; line-height: 1.02; letter-spacing: -0.06em; max-width: 12ch; margin-bottom: 26px; }
+.eyebrow { font-size: 0.7rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+.lede { max-width: 38ch; color: #c1c5c6; font-size: clamp(1rem, 1.4vw, 1.2rem); margin-bottom: 30px; }
+.button { display: inline-flex; align-items: center; gap: 32px; background: #e5e6e2; color: #05080a; padding: 17px 22px; font-size: 0.9rem; white-space: nowrap; }
+.page .button:hover { background: #fff; color: #05080a; }
+.button:active { transform: translateY(1px); }
+.figure { margin: 0; min-width: 0; }
+.mapLink { display: block; background: #fafafa; }
+.figure img { display: block; width: 100%; height: auto; }
+.figure figcaption { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 0.7rem; line-height: 1.5; padding-top: 14px; }
+.figure figcaption a { flex-shrink: 0; color: #e5e6e2; }
+.introduction, .method { display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(40px, 9vw, 130px); padding: 72px 0; border-top: 1px solid var(--line); }
+.prose { color: #b8bfc2; font-size: 1rem; }
+.prose p { margin-bottom: 24px; }
+.prose h3 { color: #e5e6e2; margin: 36px 0 16px; }
+.prose h3:first-child { margin-top: 0; }
+.interpretation { padding-left: 20px; border-left: 3px solid #c77a78; }
+.interpretation strong { display: block; color: #e5e6e2; margin-bottom: 6px; }
+.selected { border-top: 1px solid var(--line); padding: 72px 0 80px; }
+.sectionHeading { max-width: 640px; margin-bottom: 48px; }
+.sectionHeading p:last-child, .detailCopy p, .albertaHeading p, .explore p { color: var(--muted); }
+.detail { display: grid; grid-template-columns: 1.55fr 1fr; align-items: center; gap: clamp(32px, 6vw, 88px); }
+.detailCopy { max-width: 30ch; }
+.detailCopy h3 { font-size: clamp(1.7rem, 2.8vw, 2.6rem); letter-spacing: -0.04em; }
+.textLink { display: inline-block; padding: 10px 0 6px; border-bottom: 1px solid #858d91; font-size: 0.88rem; }
+.albertaHeading { max-width: 540px; margin-top: 80px; margin-bottom: 28px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 24px; }
+.prose a { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: #717c82; }
+.prose details { border-block: 1px solid var(--line); padding: 18px 0; }
+.prose summary { cursor: pointer; color: #e5e6e2; line-height: 1.5; }
+.prose ul { padding-left: 20px; line-height: 1.6; }
+.prose li { padding: 5px 0; }
+.citation { font-size: 0.85rem; }
+.resources { display: flex; gap: 24px; flex-wrap: wrap; font-size: 0.85rem; }
+.explore { border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 60px 0; }
+.explore h2 { margin-bottom: 16px; }
+.explore p { margin-bottom: 0; }
+.footer { border-top: 1px solid var(--line); padding: 24px 0 32px; display: flex; justify-content: space-between; gap: 24px; font-size: 0.75rem; color: var(--muted); }
+@media (max-width: 767px) {
+  .header { min-height: 72px; gap: 12px; }
+  .header nav { gap: 16px; font-size: 0.7rem; }
+  .name { font-size: 0.9rem; }
+  .hero { grid-template-columns: 1fr; gap: 40px; padding: 40px 0 48px; }
+  .hero h1 { max-width: 14ch; font-size: clamp(2.8rem, 10vw, 4.5rem); }
+  .introduction, .method, .detail, .pair { grid-template-columns: 1fr; gap: 28px; }
+  .introduction, .method, .selected { padding: 48px 0; }
+  .detailCopy { max-width: 45ch; }
+  .albertaHeading { margin-top: 56px; }
+  .pair { gap: 36px; }
+  .explore { align-items: flex-start; flex-direction: column; padding: 48px 0; }
+  .footer { flex-direction: column; gap: 12px; }
+  .figure figcaption { flex-wrap: wrap; }
+}

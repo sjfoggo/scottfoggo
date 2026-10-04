@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Canadian Fire Perimeter Atlas · 1980–2024</title>
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail">
+      <a class="portfolio-link" href="../projects/canadian-fire-perimeter-atlas/">← Back to the project</a>
+      <div class="eyebrow">WILDFIRE TECHNOLOGY FIELD GUIDE</div>
+      <h1>Where fire<br>has been.</h1>
+      <p class="intro">Recorded wildfire footprints across Canada's provinces and territories, 1980-2024. Darker red means overlapping recorded perimeters, not fire risk.</p>
+      <div class="rail-heading">SELECT A JURISDICTION</div>
+      <nav id="province-list" aria-label="Provinces and territories"></nav>
+      <div class="rail-foot">13 jurisdictions · 45 years<br>Agency fire perimeters from the National Fire Database</div>
+    </aside>
+    <main class="main">
+      <div class="topline"><span>CANADIAN FIRE PERIMETER ATLAS</span><span id="position">01 / 13</span></div>
+      <div class="title-row">
+        <div><h2 id="province-title">British Columbia</h2><p id="province-meta"></p></div>
+        <a id="download-link" class="download" download>Download map ↗</a>
+      </div>
+      <div id="view-tabs" class="view-tabs" role="group" aria-label="Map views"></div>
+      <section class="map-shell" aria-label="Zoomable wildfire map">
+        <div id="map-stage" class="map-stage">
+          <img id="map-image" draggable="false" alt="Historical fire perimeter map">
+          <div class="zoom-instruction">SCROLL TO ZOOM · DRAG TO EXPLORE</div>
+        </div>
+        <div class="controls" aria-label="Map zoom controls">
+          <button id="zoom-out" aria-label="Zoom out">−</button>
+          <span id="zoom-level">100%</span>
+          <button id="zoom-in" aria-label="Zoom in">+</button>
+          <button id="zoom-reset" class="reset" aria-label="Reset zoom">Fit</button>
+        </div>
+      </section>
+      <div class="bottomline">
+        <div class="legend"><span class="swatch"></span>Recorded burned footprint <span class="legend-detail">Darker red = overlapping historical perimeters</span></div>
+        <div class="credit">NRCan National Fire Database · Statistics Canada 2021 boundaries & population centres</div>
+      </div>
+      <details class="method"><summary>About the data and coverage</summary>
+        <p>Each red shape is an agency-reported fire perimeter recorded in the National Fire Database (NFDB), selected by jurisdiction for the 1980–2024 view. A pale grey map is not evidence that an area has never burned: perimeter coverage varies by place and year. The NFDB polygon archive has no Nunavut agency layer; only any Parks Canada perimeters that intersect Nunavut can appear there. New Brunswick and Newfoundland and Labrador have substantial missing recent years; Prince Edward Island has only 2024 polygons. These maps show recorded footprints, not fire counts or probabilities.</p>
+        <p>Population-centre names and 2021 population rankings come from Statistics Canada. The images are bundled with this website, so zooming works without a live map service. <a href="../projects/canadian-fire-perimeter-atlas/#data">Read the method, coverage notes and source attribution</a>, or <a href="manifest.json">open the manifest</a>.</p>
+      </details>
+    </main>
+  </div>
+  <script src="atlas-data.js"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>

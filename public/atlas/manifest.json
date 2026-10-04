@@ -1,0 +1,300 @@
+{
+  "fire_source": "https://cwfis.cfs.nrcan.gc.ca/downloads/nfdb/fire_poly/current_version/NFDB_poly.zip",
+  "boundary_source": "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0/query",
+  "population_sources": [
+    "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/7/query",
+    "https://www150.statcan.gc.ca/n1/tbl/csv/98100011-eng.zip"
+  ],
+  "retrieved_on": "2026-10-03",
+  "year_range": [
+    1980,
+    2024
+  ],
+  "crs": "EPSG:3347",
+  "provinces": [
+    {
+      "code": "BC",
+      "name": "British Columbia",
+      "overview": "bc-overview.png",
+      "incident_perimeters": 9188,
+      "labelled_centres": [
+        "Vancouver",
+        "Victoria",
+        "Kelowna",
+        "Kamloops",
+        "Prince George",
+        "Vernon",
+        "Penticton",
+        "Squamish",
+        "Fort St. John"
+      ],
+      "focus_views": [
+        {
+          "name": "Southern Interior",
+          "image": "bc-southern-interior.png",
+          "cities": [
+            "Kelowna",
+            "Kamloops",
+            "Vernon",
+            "Penticton"
+          ],
+          "map_image": "bc-southern-interior-map.png"
+        }
+      ],
+      "map_image": "bc-overview-map.png"
+    },
+    {
+      "code": "AB",
+      "name": "Alberta",
+      "overview": "ab-overview.png",
+      "incident_perimeters": 5552,
+      "labelled_centres": [
+        "Calgary",
+        "Edmonton",
+        "Lethbridge",
+        "Fort McMurray",
+        "Grande Prairie",
+        "Lloydminster",
+        "Canmore",
+        "Whitecourt",
+        "Hinton"
+      ],
+      "focus_views": [
+        {
+          "name": "Fort McMurray region",
+          "image": "ab-fort-mcmurray-region.png",
+          "cities": [
+            "Fort McMurray"
+          ],
+          "map_image": "ab-fort-mcmurray-region-map.png"
+        }
+      ],
+      "map_image": "ab-overview-map.png"
+    },
+    {
+      "code": "SK",
+      "name": "Saskatchewan",
+      "overview": "sk-overview.png",
+      "incident_perimeters": 2990,
+      "labelled_centres": [
+        "Saskatoon",
+        "Regina",
+        "Prince Albert",
+        "Lloydminster",
+        "Melfort",
+        "La Ronge",
+        "Meadow Lake",
+        "Flin Flon",
+        "Nipawin"
+      ],
+      "focus_views": [
+        {
+          "name": "Prince Albert region",
+          "image": "sk-prince-albert-region.png",
+          "cities": [
+            "Prince Albert"
+          ],
+          "map_image": "sk-prince-albert-region-map.png"
+        }
+      ],
+      "map_image": "sk-overview-map.png"
+    },
+    {
+      "code": "MB",
+      "name": "Manitoba",
+      "overview": "mb-overview.png",
+      "incident_perimeters": 10876,
+      "labelled_centres": [
+        "Winnipeg",
+        "Brandon",
+        "Steinbach",
+        "Thompson",
+        "Dauphin",
+        "The Pas",
+        "Niverville",
+        "Oakbank",
+        "Neepawa"
+      ],
+      "focus_views": [
+        {
+          "name": "Thompson region",
+          "image": "mb-thompson-region.png",
+          "cities": [
+            "Thompson"
+          ],
+          "map_image": "mb-thompson-region-map.png"
+        }
+      ],
+      "map_image": "mb-overview-map.png"
+    },
+    {
+      "code": "ON",
+      "name": "Ontario",
+      "overview": "on-overview.png",
+      "incident_perimeters": 2453,
+      "labelled_centres": [
+        "Toronto",
+        "Ottawa - Gatineau",
+        "Sudbury",
+        "Timmins",
+        "Valley East",
+        "Kenora",
+        "Fort Frances",
+        "Sturgeon Falls",
+        "Chelmsford"
+      ],
+      "focus_views": [
+        {
+          "name": "Northwestern Ontario",
+          "image": "on-northwestern-ontario.png",
+          "cities": [
+            "Kenora",
+            "Dryden"
+          ],
+          "map_image": "on-northwestern-ontario-map.png"
+        }
+      ],
+      "map_image": "on-overview-map.png"
+    },
+    {
+      "code": "QC",
+      "name": "Quebec",
+      "overview": "qc-overview.png",
+      "incident_perimeters": 4330,
+      "labelled_centres": [
+        "Montr\u00e9al",
+        "Ottawa - Gatineau",
+        "Rimouski",
+        "Val-d'Or",
+        "Sept-\u00celes",
+        "Hauterive",
+        "Dolbeau",
+        "Baie-Comeau",
+        "Roberval"
+      ],
+      "focus_views": [
+        {
+          "name": "Saguenay region",
+          "image": "qc-saguenay-region.png",
+          "cities": [
+            "Chicoutimi - Jonqui\u00e8re",
+            "Alma"
+          ],
+          "map_image": "qc-saguenay-region-map.png"
+        }
+      ],
+      "map_image": "qc-overview-map.png"
+    },
+    {
+      "code": "NB",
+      "name": "New Brunswick",
+      "overview": "nb-overview.png",
+      "incident_perimeters": 44,
+      "labelled_centres": [
+        "Moncton",
+        "Fredericton",
+        "Bathurst",
+        "Chatham - Douglastown",
+        "Tracadie-Sheila",
+        "Caraquet",
+        "Shippagan",
+        "Richibucto 15"
+      ],
+      "focus_views": [],
+      "map_image": "nb-overview-map.png"
+    },
+    {
+      "code": "NS",
+      "name": "Nova Scotia",
+      "overview": "ns-overview.png",
+      "incident_perimeters": 790,
+      "labelled_centres": [
+        "Halifax",
+        "Cape Breton - Sydney",
+        "Yarmouth",
+        "Liverpool",
+        "Shelburne"
+      ],
+      "focus_views": [
+        {
+          "name": "Halifax region",
+          "image": "ns-halifax-region.png",
+          "cities": [
+            "Halifax"
+          ],
+          "map_image": "ns-halifax-region-map.png"
+        }
+      ],
+      "map_image": "ns-overview-map.png"
+    },
+    {
+      "code": "PE",
+      "name": "Prince Edward Island",
+      "overview": "pe-overview.png",
+      "incident_perimeters": 8,
+      "labelled_centres": [
+        "Charlottetown",
+        "Summerside"
+      ],
+      "focus_views": [],
+      "map_image": "pe-overview-map.png"
+    },
+    {
+      "code": "NL",
+      "name": "Newfoundland and Labrador",
+      "overview": "nl-overview.png",
+      "incident_perimeters": 356,
+      "labelled_centres": [
+        "St. John's",
+        "Corner Brook",
+        "Grand Falls-Windsor",
+        "Gander",
+        "Labrador City",
+        "Happy Valley-Goose Bay",
+        "Bishop's Falls",
+        "Botwood",
+        "Springdale"
+      ],
+      "focus_views": [],
+      "map_image": "nl-overview-map.png"
+    },
+    {
+      "code": "YT",
+      "name": "Yukon",
+      "overview": "yt-overview.png",
+      "incident_perimeters": 1744,
+      "labelled_centres": [
+        "Whitehorse",
+        "Dawson"
+      ],
+      "focus_views": [],
+      "map_image": "yt-overview-map.png"
+    },
+    {
+      "code": "NT",
+      "name": "Northwest Territories",
+      "overview": "nt-overview.png",
+      "incident_perimeters": 4557,
+      "labelled_centres": [
+        "Yellowknife",
+        "Inuvik",
+        "Hay River",
+        "Fort Smith"
+      ],
+      "focus_views": [],
+      "map_image": "nt-overview-map.png"
+    },
+    {
+      "code": "NU",
+      "name": "Nunavut",
+      "overview": "nu-overview.png",
+      "incident_perimeters": 16,
+      "labelled_centres": [
+        "Iqaluit",
+        "Arviat"
+      ],
+      "focus_views": [],
+      "map_image": "nu-overview-map.png"
+    }
+  ]
+}

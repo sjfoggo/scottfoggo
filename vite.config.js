@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { fileURLToPath } from "node:url";
 
 export default defineConfig(() => {
   const noIndex = process.env.STAGING_NOINDEX === "true";
@@ -25,6 +26,10 @@ export default defineConfig(() => {
     ],
     build: {
       rollupOptions: {
+        input: {
+          home: fileURLToPath(new URL("./index.html", import.meta.url)),
+          atlasProject: fileURLToPath(new URL("./projects/canadian-fire-perimeter-atlas/index.html", import.meta.url)),
+        },
         output: {
           entryFileNames: "assets/site.[hash].js",
           chunkFileNames: "assets/[name].[hash].js",
