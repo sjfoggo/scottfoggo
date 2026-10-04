@@ -19,10 +19,25 @@ npm run dev
 - `npm run build` creates an optimized production build in `dist/`.
 - `npm run preview` serves the production build locally.
 
-## Canadian Fire Perimeter Atlas
+## Canadian Wildfire Atlas
 
-The homepage links to `/projects/canadian-fire-perimeter-atlas/`, a separate Vite HTML entry with its own React page. Both this route and `/atlas/` are real directories in the production build, so direct links work on GitHub Pages without a single-page-app fallback. Links respect `VITE_BASE_PATH` for staging under `/dev/`.
+The homepage links to `/projects/canadian-wildfire-atlas/`. Its dedicated Vite HTML entry provides the portfolio page and lazily loads an OpenSeadragon national map. The earlier `/projects/canadian-fire-perimeter-atlas/` URL and `/atlas/` entry redirect to the new experience. All paths support staging under `VITE_BASE_PATH=/dev/`.
 
-`public/atlas/` bundles the complete historical atlas: 13 jurisdiction overviews, seven close-ups, all 40 PNGs (titled exports and map crops), the browser viewer, and the source manifest. The page uses the titled BC and Alberta exports. Atlas hashes such as `#BC/1` and `#AB/1` open specific close-ups.
+The page uses a Southern Interior hero and supporting Fort McMurray and Saguenay images. The final map displays one continuous Canada-wide rendering, loading only the image tiles needed for the current view. Touch devices use pinch-to-zoom; desktop users can scroll to zoom. Both support pan, zoom buttons, reset, city labels, keyboard controls and fullscreen.
 
-These assets were copied from the Wildfire Technology Field Guide's `outputs/atlas/` on October 3, 2026. They use the NFDB archive edition posted January 28, 2026, filtered to 1980-2024. No source archive or absolute local paths are required at runtime. See the page's **Method & coverage** section for attribution and limitations, and `public/atlas/README.md` for asset maintenance.
+### Rebuilding the national map
+
+The generator adapts FireStat's NFDB processing, using its cached Statistics Canada geometries and Python dependencies. It needs GeoPandas, Shapely, Matplotlib, pandas, pyogrio, requests and Pillow. Paths below are build-time inputs only; the website bundles its assets and makes no runtime requests to the local source project.
+
+```sh
+python scripts/build_national_atlas.py \
+  --source-project /path/to/firestat \
+  --archive /path/to/NFDB_poly.zip \
+  --cache /tmp/canadian-wildfire-atlas-cache \
+  --output /tmp/canadian-wildfire-atlas-preview \
+  --width 3600
+```
+
+Inspect the static PNG first. Then render the final map with `--width 16384 --tiles` into a temporary output folder. Copy its `canada_files/`, `canada.dzi`, `canada-preview.webp`, `canada-preview-800.webp`, `canada-preview.png`, and `national-manifest.json` into `public/atlas/national/`. The large intermediate `canada-map.png` is a build artifact and is not served. Reuse the cache only with the same source snapshot and processing rules.
+
+See `public/atlas/README.md` for provenance, limitations and image maintenance. The national render has finite resolution; it is not a street- or parcel-level map.

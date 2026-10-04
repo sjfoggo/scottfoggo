@@ -1,0 +1,39 @@
+.frame { background: #101416; color: #e5e6e2; border: 1px solid #353a3d; }
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px; }
+.zoomControls, .options { display: flex; align-items: center; gap: 8px; }
+.frame button { color: #e5e6e2; background: transparent; border: 1px solid #5b656a; padding: 10px 14px; min-height: 44px; cursor: pointer; font-size: 0.8rem; }
+.frame button:hover { background: #30383c; }
+.frame button:focus-visible { outline: 2px solid #e5e6e2; outline-offset: 3px; }
+.frame button:disabled { opacity: .5; cursor: wait; }
+.frame button[aria-pressed="true"] { background: #e5e6e2; color: #101416; border-color: #e5e6e2; }
+.zoomControls button:first-child, .zoomControls button:nth-child(3) { font-size: 1.25rem; width: 44px; padding: 6px; }
+.zoomValue { width: 44px; text-align: center; font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+.stage { position: relative; height: min(78vh, 900px); min-height: 420px; background: #fafafa; overflow: hidden; }
+.canvas, .labels, .preview { position: absolute; inset: 0; width: 100%; height: 100%; }
+.canvas { touch-action: none; }
+.canvas :global(.openseadragon-canvas):focus-visible { outline: 3px solid #8d2b29; outline-offset: -4px; }
+.labels { pointer-events: none; overflow: hidden; }
+.preview { object-fit: contain; pointer-events: none; }
+.place { position: absolute; top: 0; left: 0; color: #292e2e; font: 12px Arial, sans-serif; white-space: nowrap; padding: 3px 5px 3px 10px; text-shadow: -1px -1px 0 #fafafa, 1px -1px 0 #fafafa, -1px 1px 0 #fafafa, 1px 1px 0 #fafafa; }
+.place::before { content: ""; position: absolute; left: 1px; top: 50%; width: 4px; height: 4px; border-radius: 50%; transform: translateY(-50%); background: #343b3b; }
+.place[data-align="right"] { padding: 3px 10px 3px 5px; }
+.place[data-align="right"]::before { right: 1px; left: auto; }
+.legend { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; padding: 16px; font-size: .75rem; color: #b8bfc2; }
+.legend > span:first-child { display: flex; align-items: center; gap: 10px; }
+.swatch { width: 16px; height: 16px; background: #d48885; border: 1px solid #e5a19e; display: inline-block; }
+.touchHint { display: none; }
+.status:not(:empty) { padding: 0 16px 16px; font-size: .85rem; line-height: 1.6; }
+.status a { text-decoration: underline; }
+.status button { padding: 6px 10px; margin: 0 6px; }
+/* This fixed layer is reserved for the fullscreen fallback on mobile browsers. */
+.expanded, .frame:fullscreen { position: fixed; inset: 0; z-index: 10; width: 100%; height: 100dvh; display: flex; flex-direction: column; }
+.expanded .stage, .frame:fullscreen .stage { flex: 1; height: auto; min-height: 0; }
+@media (pointer: coarse), (max-width: 767px) { .mouseHint { display: none; } .touchHint { display: inline; } }
+@media (max-width: 767px) {
+  .toolbar { flex-wrap: wrap; gap: 10px; }
+  .zoomControls { flex: 1; justify-content: space-between; }
+  .options { width: 100%; justify-content: space-between; }
+  .options button { flex: 1; }
+  .stage { height: 64vh; min-height: 380px; }
+  .legend { font-size: .7rem; }
+}

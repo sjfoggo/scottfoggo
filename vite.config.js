@@ -28,7 +28,8 @@ export default defineConfig(() => {
       rollupOptions: {
         input: {
           home: fileURLToPath(new URL("./index.html", import.meta.url)),
-          atlasProject: fileURLToPath(new URL("./projects/canadian-fire-perimeter-atlas/index.html", import.meta.url)),
+          atlasProject: fileURLToPath(new URL("./projects/canadian-wildfire-atlas/index.html", import.meta.url)),
+          atlasLegacy: fileURLToPath(new URL("./projects/canadian-fire-perimeter-atlas/index.html", import.meta.url)),
         },
         output: {
           entryFileNames: "assets/site.[hash].js",

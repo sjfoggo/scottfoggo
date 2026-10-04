@@ -1,0 +1,244 @@
+{
+  "title": "Canadian Wildfire Atlas",
+  "year_range": [
+    1980,
+    2024
+  ],
+  "width": 16384,
+  "height": 14205,
+  "crs": "EPSG:3347",
+  "bounds": [
+    3556160.5,
+    526186.5,
+    9148901.5,
+    5375154.5
+  ],
+  "incident_perimeters": 42622,
+  "simplification_metres": 250,
+  "archive_edition": "2026-01-28",
+  "source_retrieved_on": "2026-10-03",
+  "fire_source": "https://cwfis.cfs.nrcan.gc.ca/downloads/nfdb/fire_poly/current_version/NFDB_poly.zip",
+  "boundary_source": "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0/query",
+  "labels": [
+    {
+      "name": "Toronto",
+      "x": 0.654011,
+      "y": 0.915278,
+      "population": 5647656
+    },
+    {
+      "name": "Montréal",
+      "x": 0.7278818,
+      "y": 0.8513471,
+      "population": 3675219
+    },
+    {
+      "name": "Vancouver",
+      "x": 0.0846825,
+      "y": 0.6983832,
+      "population": 2426160
+    },
+    {
+      "name": "Calgary",
+      "x": 0.2022636,
+      "y": 0.712676,
+      "population": 1305550
+    },
+    {
+      "name": "Edmonton",
+      "x": 0.2246992,
+      "y": 0.6612411,
+      "population": 1151635
+    },
+    {
+      "name": "Ottawa - Gatineau",
+      "x": 0.70026,
+      "y": 0.8641533,
+      "population": 1068821
+    },
+    {
+      "name": "Winnipeg",
+      "x": 0.4052666,
+      "y": 0.7896533,
+      "population": 758515
+    },
+    {
+      "name": "Québec",
+      "x": 0.7507541,
+      "y": 0.8111998,
+      "population": 733156
+    },
+    {
+      "name": "Victoria",
+      "x": 0.072698,
+      "y": 0.7073654,
+      "population": 363222
+    },
+    {
+      "name": "Halifax",
+      "x": 0.8684533,
+      "y": 0.8103725,
+      "population": 348634
+    },
+    {
+      "name": "Saskatoon",
+      "x": 0.2947073,
+      "y": 0.718405,
+      "population": 264637
+    },
+    {
+      "name": "Regina",
+      "x": 0.3131259,
+      "y": 0.7619912,
+      "population": 224996
+    },
+    {
+      "name": "St. John's",
+      "x": 0.9693371,
+      "y": 0.666164,
+      "population": 185565
+    },
+    {
+      "name": "Kelowna",
+      "x": 0.130694,
+      "y": 0.7067163,
+      "population": 181380
+    },
+    {
+      "name": "Moncton",
+      "x": 0.8397569,
+      "y": 0.7891232,
+      "population": 119785
+    },
+    {
+      "name": "Chicoutimi - Jonquière",
+      "x": 0.7434479,
+      "y": 0.7757107,
+      "population": 103934
+    },
+    {
+      "name": "Thunder Bay",
+      "x": 0.507475,
+      "y": 0.8262916,
+      "population": 95266
+    },
+    {
+      "name": "Kamloops",
+      "x": 0.1269962,
+      "y": 0.6845605,
+      "population": 92442
+    },
+    {
+      "name": "Fort McMurray",
+      "x": 0.2672651,
+      "y": 0.6022323,
+      "population": 68002
+    },
+    {
+      "name": "Prince George",
+      "x": 0.1293407,
+      "y": 0.6039063,
+      "population": 67339
+    },
+    {
+      "name": "Fredericton",
+      "x": 0.8176181,
+      "y": 0.8041973,
+      "population": 64614
+    },
+    {
+      "name": "Charlottetown",
+      "x": 0.8599248,
+      "y": 0.7741861,
+      "population": 52390
+    },
+    {
+      "name": "Brandon",
+      "x": 0.3690781,
+      "y": 0.786749,
+      "population": 50532
+    },
+    {
+      "name": "Prince Albert",
+      "x": 0.3106079,
+      "y": 0.6978909,
+      "population": 36768
+    },
+    {
+      "name": "Whitehorse",
+      "x": 0.0941773,
+      "y": 0.394474,
+      "population": 24513
+    },
+    {
+      "name": "Fort St. John",
+      "x": 0.169171,
+      "y": 0.568432,
+      "population": 21123
+    },
+    {
+      "name": "Yellowknife",
+      "x": 0.2749896,
+      "y": 0.4698515,
+      "population": 19673
+    },
+    {
+      "name": "Thompson",
+      "x": 0.4069122,
+      "y": 0.6572809,
+      "population": 12329
+    },
+    {
+      "name": "Kenora",
+      "x": 0.4392616,
+      "y": 0.7954041,
+      "population": 10974
+    },
+    {
+      "name": "Happy Valley-Goose Bay",
+      "x": 0.8284206,
+      "y": 0.6119269,
+      "population": 6996
+    },
+    {
+      "name": "Iqaluit",
+      "x": 0.6680338,
+      "y": 0.4400281,
+      "population": 6991
+    },
+    {
+      "name": "Dryden",
+      "x": 0.4603136,
+      "y": 0.7959451,
+      "population": 5355
+    },
+    {
+      "name": "La Ronge",
+      "x": 0.3233425,
+      "y": 0.657182,
+      "population": 5317
+    },
+    {
+      "name": "Inuvik",
+      "x": 0.1944172,
+      "y": 0.2693176,
+      "population": 3001
+    },
+    {
+      "name": "Arviat",
+      "x": 0.4521346,
+      "y": 0.5404862,
+      "population": 2766
+    },
+    {
+      "name": "Dawson",
+      "x": 0.1066349,
+      "y": 0.3092527,
+      "population": 1092
+    }
+  ],
+  "tile_count": 1206,
+  "tile_size": 512,
+  "tile_overlap": 1,
+  "build_seconds": 49.0
+}

@@ -1,8 +1,16 @@
-# Canadian Fire Perimeter Atlas
+# Canadian Wildfire Atlas
 
-This website bundles the Wildfire Technology Field Guide atlas generated on 2026-10-03. Open `index.html` to explore 13 provinces and territories and seven closer views. The 20 titled PNG exports and their 20 matching `-map.png` crops are included with `manifest.json` and `atlas-data.js`.
+The [portfolio page](../projects/canadian-wildfire-atlas/) combines selected regional images with one continuous, zoomable map of Canada. The former atlas entry redirects to the national map section. The earlier portfolio URL also redirects to the renamed page.
 
 Red transparency indicates overlap of recorded 1980-2024 National Fire Database perimeters, not fire risk, burn severity, or ignition density. Coverage differs by jurisdiction and year. A pale area is not evidence that it has never burned.
+
+## Assets
+
+- `national/`: continuous Canada rendering, WebP overview, PNG overview download, DZI tile pyramid and national manifest. City labels are positioned from the same Statistics Canada geometries and are drawn separately by the viewer to remain legible while zooming.
+- `previews/`: responsive regional WebP previews derived from the PNG exports. The Southern Interior hero uses a tighter crop around its population centres.
+- The original 20 titled regional PNGs, 20 matching map crops and `manifest.json` remain available as source exports. They were generated on 2026-10-03.
+
+The regional crops retain the source generator's rendering. The national image reprocesses the entire archive in one pass, merging multipart records by agency, year and fire ID before clipping to Canada. It simplifies geometry by 250 metres for display; image pixels and source generalization limit fine-scale interpretation. Never interpret national and regional incident counts as interchangeable counts of all fires.
 
 ## Sources
 
@@ -10,10 +18,8 @@ Fire data: Canadian Forest Service. 2021. *Canadian National Fire Database - Age
 
 Boundaries and labels: Statistics Canada, [2021 cartographic boundaries](https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0), [population-centre geometries](https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/7), and [2021 Census population-centre counts](https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810001101).
 
-See the [portfolio page](../projects/canadian-fire-perimeter-atlas/#data) for the method and coverage gaps.
+## Updating
 
-## Updating the bundle
+Use `scripts/build_national_atlas.py` with the FireStat Python environment, cached Statistics Canada layers, and the archived NFDB download. Start with the static preview, inspect it, then build the high-resolution tile pyramid. Pass a fresh cache directory when changing the source edition or geometry processing. See the repository README for commands. Update source dates and coverage notes when changing editions.
 
-Regenerate the atlas in the source Field Guide project, then copy its PNGs, `manifest.json`, and `atlas-data.js` together. Keep the site's viewer integration changes: portfolio return link, direct-view hashes, focus handling, accessible toggle controls, and contained map fitting. Verify every overview and close-up before replacing this snapshot. Update the edition/retrieval dates and coverage notes if the source changes.
-
-The portfolio uses responsive WebP copies in `previews/` for the four BC and Alberta titled maps. Regenerate these at 640, 1280, and 1600 pixels square with quality 90 when the PNGs change. They preserve the full image composition; downloads and the zoomable viewer retain the original PNG assets.
+Regional previews are WebP derivatives of the corresponding PNGs, using quality 90 (92 for the hero). Keep the full-resolution PNG downloads intact.
