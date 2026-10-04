@@ -45,6 +45,7 @@ const STATEMENTS = [
 
 const CONTACT_LINKS = [
   { href: "mailto:s.foggo.7@gmail.com", label: "Email" },
+  { href: `${import.meta.env.BASE_URL}projects/canadian-wildfire-atlas/`, label: "Portfolio" },
   { href: "https://github.com/sjfoggo", label: "GitHub" },
   {
     href: "https://www.linkedin.com/in/scott-foggo/",
@@ -158,9 +159,6 @@ function OceanExperience() {
 
   return (
     <main className={styles.page}>
-      <nav className={styles.workLink} aria-label="Selected work">
-        <a href={`${import.meta.env.BASE_URL}projects/canadian-wildfire-atlas/`}>Canadian Wildfire Atlas ↗</a>
-      </nav>
       <section
         className={styles.journey}
         ref={journeyRef}

@@ -27,8 +27,8 @@ function MapSection() {
   const preview = <img className={styles.mapPreview} src={`${atlas}national/canada-preview.webp`} srcSet={`${atlas}national/canada-preview-800.webp 800w, ${atlas}national/canada-preview.webp 2400w`} sizes="(max-width: 767px) calc(100vw - 40px), 94vw" alt="Canada-wide view of recorded wildfire perimeters" width="2400" height="2081" loading="lazy" />;
   return <section id="explore" className={styles.explore} ref={section} aria-labelledby="explore-title">
     <div className={styles.mapHeading}>
-      <div><p className={styles.eyebrow}>The whole picture</p><h2 id="explore-title">Canada, in one continuous view.</h2></div>
-      <p>Follow the historical footprints across the country, then move closer to a place you know.</p>
+      <h2 id="explore-title">Explore the map</h2>
+      <p>Zoom in to see recorded fire perimeters and population centres across Canada.</p>
     </div>
     {visible ? <Suspense fallback={preview}><CanadaMap /></Suspense> : preview}
     <div className={styles.mapFoot}>
@@ -53,29 +53,27 @@ export default function FireAtlasProject() {
     </header>
     <main id="project">
       <section className={styles.hero} aria-labelledby="project-title">
-        <p className={styles.eyebrow}>Historical mapping / 1980-2024</p>
         <h1 id="project-title">Canadian Wildfire Atlas</h1>
-        <p className={styles.lede}>A different way to see the places we know.</p>
+        <p className={styles.lede}>Recorded wildfire perimeters across Canada, 1980–2024.</p>
         <figure className={styles.heroFigure}>
-          <a href={`${atlas}bc-southern-interior.png`} aria-label="Open Southern Interior map at full resolution">
-            <img src={`${atlas}previews/southern-interior-hero-1280.webp`} srcSet={`${atlas}previews/southern-interior-hero-640.webp 640w, ${atlas}previews/southern-interior-hero-1280.webp 1280w, ${atlas}previews/southern-interior-hero-1920.webp 1920w`} sizes="(max-width: 1440px) 94vw, 1354px" width="2136" height="1200" alt="Overlapping red fire perimeters around Kamloops, Vernon, Kelowna and Penticton in British Columbia's Southern Interior." fetchPriority="high" />
+          <a href="#explore" aria-label="Explore the zoomable map of Canada">
+            <img src={`${atlas}national/canada-preview.webp`} srcSet={`${atlas}national/canada-preview-800.webp 800w, ${atlas}national/canada-preview.webp 2400w`} sizes="(max-width: 767px) calc(100vw - 40px), min(83vw, 83vh, 1040px)" width="2400" height="2081" alt="The full map of Canada, with recorded wildfire perimeters in translucent red across every province and territory." fetchPriority="high" />
           </a>
-          <figcaption><span>Southern Interior, British Columbia</span><span>Recorded wildfire perimeters, 1980-2024</span></figcaption>
+          <figcaption><span>Canada · 1980–2024</span><a href="#explore">Open interactive map ↗</a></figcaption>
         </figure>
       </section>
 
       <section id="about" className={styles.story} aria-labelledby="about-title">
         <div className={styles.storyCopy}>
-          <p className={styles.eyebrow}>The project</p>
-          <h2 id="about-title">The history around a familiar name.</h2>
-          <p>I wanted to make Canada’s wildfire record easier to see. Putting decades of fire perimeters on one map connects an abstract dataset to cities, landscapes and places we recognise.</p>
-          <p>Each recorded incident uses the same translucent red. Where perimeters overlap, the colour deepens. This is a view of historical footprints, not a prediction of where fire will go next.</p>
+          <h2 id="about-title">About the project</h2>
+          <p>I made these maps to see where recorded wildfires sit in relation to Canada’s cities and towns. They combine 45 years of fire perimeters in national, provincial and regional views.</p>
+          <p>Each recorded incident uses the same translucent red. Where perimeters overlap, the colour deepens.</p>
         </div>
-        <RegionalImage file="ab-fort-mcmurray-region" title="Fort McMurray region, Alberta" description="Dense overlapping historical fire perimeters around Fort McMurray, shown in translucent red." />
+        <RegionalImage file="bc-overview" title="British Columbia" description="Recorded wildfire perimeters across British Columbia, with its main population centres labelled." />
       </section>
 
       <section className={styles.method} aria-labelledby="method-title">
-        <div className={styles.methodHeading}><p className={styles.eyebrow}>Behind the maps</p><h2 id="method-title">Public data.<br />A continuous view.</h2></div>
+        <div className={styles.methodHeading}><h2 id="method-title">Data & technology</h2></div>
         <div className={styles.methodBody}>
           <h3>The data</h3>
           <p>Fire perimeters come from Natural Resources Canada’s <a href="https://cwfis.cfs.nrcan.gc.ca/downloads/nfdb/fire_poly/current_version/">National Fire Database</a>, filtered to 1980-2024. Statistics Canada supplies the <a href="https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0">2021 province and territory boundaries</a>, <a href="https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/7">population-centre shapes</a> and <a href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=9810001101">census populations</a> used for labels.</p>
@@ -84,10 +82,15 @@ export default function FireAtlasProject() {
         </div>
       </section>
 
+      <div className={styles.regionalMaps}>
+        <RegionalImage file="bc-southern-interior" title="Southern Interior, British Columbia" description="Overlapping red fire perimeters around Kamloops, Vernon, Kelowna and Penticton in British Columbia’s Southern Interior." />
+        <RegionalImage file="ab-fort-mcmurray-region" title="Fort McMurray region, Alberta" description="Dense overlapping historical fire perimeters around Fort McMurray, shown in translucent red." />
+      </div>
+
       <section className={styles.coverage} aria-labelledby="coverage-title">
         <RegionalImage file="qc-saguenay-region" title="Saguenay region, Quebec" description="Historical wildfire footprints surrounding the labelled population centres of Alma and Chicoutimi - Jonquière in Quebec." />
         <div className={styles.coverageCopy}>
-          <h2 id="coverage-title">Read the red.<br />Question the gaps.</h2>
+          <h2 id="coverage-title">Reading the maps</h2>
           <p>Darker red means more overlapping recorded perimeters. It does not measure risk, severity or ignition density. A pale area is not evidence that it has never burned.</p>
           <p>Coverage varies by agency and year. These maps are for exploring the historical record, not incident decisions or comparisons that assume uniform reporting.</p>
           <details><summary>Coverage & source details</summary>

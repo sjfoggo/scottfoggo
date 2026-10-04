@@ -23,7 +23,7 @@ npm run dev
 
 The homepage links to `/projects/canadian-wildfire-atlas/`. Its dedicated Vite HTML entry provides the portfolio page and lazily loads an OpenSeadragon national map. The earlier `/projects/canadian-fire-perimeter-atlas/` URL and `/atlas/` entry redirect to the new experience. All paths support staging under `VITE_BASE_PATH=/dev/`.
 
-The page uses a Southern Interior hero and supporting Fort McMurray and Saguenay images. The final map displays one continuous Canada-wide rendering, loading only the image tiles needed for the current view. Touch devices use pinch-to-zoom; desktop users can scroll to zoom. Both support pan, zoom buttons, reset, city labels, keyboard controls and fullscreen.
+The page leads with the complete national map, with British Columbia, Southern Interior, Fort McMurray and Saguenay images alongside the project description. The homepage links to it as “Portfolio” beside Email in the final section. The final map displays one continuous Canada-wide rendering, loading only the image tiles needed for the current view. Touch devices use pinch-to-zoom; desktop users can scroll to zoom. Both support pan, zoom buttons, reset, city labels, keyboard controls and fullscreen.
 
 ### Rebuilding the national map
 

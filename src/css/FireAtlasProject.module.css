@@ -16,7 +16,7 @@
 .eyebrow { font-size: 0.7rem; letter-spacing: 0.11em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
 .lede { color: #b8bfc2; font-size: 1.2rem; margin-bottom: 32px; }
 .heroFigure, .figure { margin: 0; min-width: 0; }
-.heroFigure img { width: 100%; height: auto; max-height: 61vh; object-fit: cover; display: block; }
+.heroFigure img { width: 100%; height: min(72vh, 900px); object-fit: contain; background: #fafafa; display: block; }
 .figure img { display: block; width: 100%; height: auto; background: #fafafa; }
 .page figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: 0.75rem; line-height: 1.5; padding-top: 14px; }
 .page figcaption a { color: #e5e6e2; }
@@ -25,6 +25,7 @@
 .method { border-top: 1px solid var(--line); padding: 72px 0; display: grid; grid-template-columns: 1fr 1.15fr; gap: clamp(40px, 8vw, 110px); }
 .methodBody h3:not(:first-child) { margin-top: 36px; }
 .methodBody a, .coverageCopy a { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: #717c82; }
+.regionalMaps { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding-bottom: 100px; }
 .coverage { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(40px, 8vw, 110px); align-items: center; padding: 20px 0 100px; }
 .coverage details { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 28px; }
 .coverage summary { cursor: pointer; font-size: 0.9rem; }
@@ -45,8 +46,9 @@
   .hero { padding-top: 32px; }
   .hero h1 { max-width: 13ch; font-size: clamp(2.8rem, 11vw, 4.5rem); }
   .lede { font-size: 1rem; }
-  .heroFigure img { min-height: 310px; max-height: none; object-fit: cover; object-position: 45% center; }
-  .story, .method, .coverage, .mapHeading { grid-template-columns: 1fr; gap: 28px; }
+  .heroFigure img { height: auto; }
+  .story, .method, .coverage, .mapHeading, .regionalMaps { grid-template-columns: 1fr; gap: 28px; }
+  .regionalMaps { padding-bottom: 52px; }
   .story, .method { padding: 52px 0; }
   .coverage { padding: 0 0 52px; }
   .coverageCopy { order: -1; }

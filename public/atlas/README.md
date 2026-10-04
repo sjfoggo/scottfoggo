@@ -7,7 +7,7 @@ Red transparency indicates overlap of recorded 1980-2024 National Fire Database 
 ## Assets
 
 - `national/`: continuous Canada rendering, WebP overview, PNG overview download, DZI tile pyramid and national manifest. City labels are positioned from the same Statistics Canada geometries and are drawn separately by the viewer to remain legible while zooming.
-- `previews/`: responsive regional WebP previews derived from the PNG exports. The Southern Interior hero uses a tighter crop around its population centres.
+- `previews/`: responsive regional WebP previews derived from the PNG exports. Files with `-detail-` use the map-only crops; the portfolio hero uses the complete national preview.
 - The original 20 titled regional PNGs, 20 matching map crops and `manifest.json` remain available as source exports. They were generated on 2026-10-03.
 
 The regional crops retain the source generator's rendering. The national image reprocesses the entire archive in one pass, merging multipart records by agency, year and fire ID before clipping to Canada. It simplifies geometry by 250 metres for display; image pixels and source generalization limit fine-scale interpretation. Never interpret national and regional incident counts as interchangeable counts of all fires.
@@ -22,4 +22,4 @@ Boundaries and labels: Statistics Canada, [2021 cartographic boundaries](https:/
 
 Use `scripts/build_national_atlas.py` with the FireStat Python environment, cached Statistics Canada layers, and the archived NFDB download. Start with the static preview, inspect it, then build the high-resolution tile pyramid. Pass a fresh cache directory when changing the source edition or geometry processing. See the repository README for commands. Update source dates and coverage notes when changing editions.
 
-Regional previews are WebP derivatives of the corresponding PNGs, using quality 90 (92 for the hero). Keep the full-resolution PNG downloads intact.
+Regional previews are WebP derivatives of the corresponding PNGs, using quality 90. The retained Southern Interior wide crop uses quality 92. Keep the full-resolution PNG downloads intact.
