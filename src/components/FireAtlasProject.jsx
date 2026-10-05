@@ -49,7 +49,6 @@ export default function FireAtlasProject() {
     <a className={styles.skip} href="#project">Skip to project</a>
     <header className={styles.header}>
       <a className={styles.name} href={base}>Scott Foggo</a>
-      <nav aria-label="Project navigation"><a href="#about">About the project</a><a href="#explore">Explore Canada ↗</a></nav>
     </header>
     <main id="project">
       <section className={styles.hero} aria-labelledby="project-title">
@@ -103,6 +102,5 @@ export default function FireAtlasProject() {
       </section>
       <MapSection />
     </main>
-    <footer className={styles.footer}><a href={base}>Back to Scott Foggo</a><span>Canadian Wildfire Atlas</span></footer>
   </div>;
 }
