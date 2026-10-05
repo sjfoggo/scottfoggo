@@ -44,8 +44,8 @@ const STATEMENTS = [
 ];
 
 const CONTACT_LINKS = [
-  { href: "mailto:s.foggo.7@gmail.com", label: "Email" },
   { href: `${import.meta.env.BASE_URL}projects/canadian-wildfire-atlas/`, label: "Portfolio" },
+  { href: "mailto:s.foggo.7@gmail.com", label: "Email" },
   { href: "https://github.com/sjfoggo", label: "GitHub" },
   {
     href: "https://www.linkedin.com/in/scott-foggo/",
